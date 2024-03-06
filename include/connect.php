@@ -1,6 +1,17 @@
 <?php
-	//MySQL connection
-	$connect = new mysqli("localhost", "root", "", "vehicle_sales_management_system");
-	//$con_audit = mysqli_connect("localhost", "root", "", "vsm_audit");
-	
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "vehicle_sales_management_system";
+
+// Create connection
+$connect = new mysqli($servername, $username, $password, $dbname);
+
+//check Connection
+if($connect->connect_error)
+{
+	die("Connection Failed: ". $connect->connect_error);
+}
+
 ?>
