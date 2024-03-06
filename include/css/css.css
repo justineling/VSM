@@ -1,0 +1,99 @@
+tfoot {
+    display: table-header-group;
+}
+tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+.col-form-label,
+.form-control::placeholder{
+	font-family:"Century Gothic";
+	font-size: 12px;
+}
+.form-control{
+	border-radius: 0px;
+	line-height: 1.0;
+	font-size: 12px;
+}
+.actionbtn{
+	border: 1px solid #000;
+    width: 22px;
+    height: 22px;
+}
+.btn-icon{
+	border: 1px solid #000;
+	background-color: #fff;
+}
+.title{
+    margin-bottom: 10px;
+	font-size: 22px;
+}
+[type=reset], [type=submit], button, html [type=button] {
+    -webkit-appearance: unset;
+}
+.btn-yellow{
+	font-family: 'Century Gothic';
+    font-weight: bold;
+    color: #000;
+    background-color: #e7b514;
+    border-radius: 0;
+    font-size: 12px;
+    height:25px;
+    width: 173px;
+    padding:0px 20px;
+    line-height: 23px;
+    vertical-align: middle;
+}
+.btn-blue{
+	font-family: 'Century Gothic';
+    font-weight: bold;
+    color: #000;
+    background-color: #aae8ff;
+    border-radius: 0;
+    font-size: 12px;
+    height:25px;
+    width: 173px;
+    padding:0px 20px;
+    line-height: 23px;
+    vertical-align: middle;
+}
+.btn-green{
+    font-family: 'Century Gothic';
+    font-weight: bold;
+    color: #000;
+    background-color: #00fbce;
+    border-radius: 0;
+    font-size: 12px;
+    height:25px;
+    width: 173px;
+    padding:0px 20px;
+    line-height: 23px;
+    vertical-align: middle;
+}
+.btn-grey{
+    font-family: 'Century Gothic';
+    font-weight: bold;
+    color: #000;
+    background-color: #cecece;
+    border-radius: 0;
+    font-size: 12px;
+    height:25px;
+    width: 173px;
+    padding:0px 20px;
+    line-height: 23px;
+    vertical-align: middle;
+}
+.btn-pink{
+    font-family: 'Century Gothic';
+    font-weight: bold;
+    color: #000;
+    background-color: #ed008c;
+    border-radius: 0;
+    font-size: 12px;
+    height:25px;
+    width: 173px;
+    padding:0px 20px;
+    line-height: 23px;
+    vertical-align: middle;
+}
