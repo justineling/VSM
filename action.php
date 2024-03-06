@@ -12,7 +12,7 @@
 		} 
 		
 		$username = $_POST['username'];
-		$username = mysqli_real_escape_string($con, $_POST['username']);
+		$username = mysqli_real_escape_string($con, $username);
 		$password = $_POST['password'];
 		//$t_hasher = new PasswordHash(8, FALSE);
 

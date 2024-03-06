@@ -51,13 +51,12 @@ $query1 = $connect;
 	}
 </style>
 
-<main role="main" class="col-md-12 ml-sm-0 col-lg-12 pt-2 px-2" style="background-color: white;">
+<main role="main" class="col-md-9 ml-sm-0 col-lg-12 pt-2 px-2" style="background-color: white;">
 	<div class="row row2">
 		<div class="col-12 title">
 			<b>APPOINTMENT</b>
 			<div style="float:right;">
-                <!--loss of add function-->
-				<a type="button" class="btn btn-green" href="mainIndex.php?page=add_appointment">ADD</a>&nbsp; 
+				<a type="button" class="btn btn-green" href="">ADD</a>&nbsp; 
 			</div>
 		</div>
 		
@@ -75,20 +74,19 @@ $query1 = $connect;
 		                <th>PRE-ASSIGN MECHANIC</th>
 		                <th>PRE-ASSIGN PARTS</th>
 		                <th>REMARKS</th>
-						<th style="width:10%;background-image:none !important;">ACTION</th>
 		            </tr>
 		        </thead>
 		        <tfoot>
 		            <tr>
-						<th style="padding:0;"></th> 
-						<th style="padding:0;"></th> 
-						<th>DATE</th>
-		                <th>TIME</th>
-		                <th>CUSTOMER</th>
-		                <th>VEHICLE</th>
-		                <th>SERVICE TYPE</th>
-		                <th>PRE-ASSIGN MECHANIC</th>
-		                <th>PRE-ASSIGN PARTS</th>
+						<th></th>
+		                <th></th>
+		                <th>ID</th>
+		                <th>NAME</th>
+		                <th>COMPANY NAME</th>
+		                <th>VEHICLE CODE</th>
+		                <th>HP NO.</th>
+		                <th>CONTACT</th>
+		                <th>EMAIL</th>
 		                <th>REMARKS</th>
 		            </tr>
 		        </tfoot>
@@ -115,82 +113,97 @@ $query1 = $connect;
 								
 								echo '<tr>';
 									
-									echo '<th style="padding:0;background-image:none !important;"><input type="checkbox" name="check[]" value="" id=""></th>';
-									echo '<td>'.$counter.'</td>';
+									echo '<td><input type="checkbox" name="check[]" value="" id=""></td>';
+									echo '<td>',$counter,'</td>';
+									
 									echo '<td>',$date,'</td>';
 									echo '<td>',$time,'</td>';
 									
 									$query3 = "SELECT name FROM customer WHERE customer_id=$customer_id";
+									
 									if($result3 = mysqli_query($query1,$query3)){
+										
 										if($row = mysqli_fetch_assoc($result3)){
+											
 											$customer_name = $row["name"];
-											echo '<td>'.$customer_name.'</td>';		
-										} else {
-											echo '<td></td>'; 
+											
+											echo '<td>',$customer_name,'</td>';
 										}
 									}
-
-									$query4 = "SELECT brand,model_type FROM vehicle WHERE vehicle_id=$vehicle_id";
+									
+									$query4 = "SELECT brand,model FROM vehicle WHERE vehicle_id=$vehicle_id";
+									
 									if($result4 = mysqli_query($query1,$query4)){
+										
 										if($row = mysqli_fetch_assoc($result4)){
+											
 											$brand = $row["brand"];
-											$model = $row["model_type"];
-											echo '<td>'.$brand.':'.$model.'</td>';
-										} else {
-											echo '<td></td>'; 
+											$model = $row["model"];
+											
+											echo '<td>',$brand,' ',$model,'</td>';
 										}
 									}
-
+									
 									$query5 = "SELECT service_type FROM service WHERE service_id=$service_id";
+									
 									if($result5 = mysqli_query($query1,$query5)){
+										
 										if($row = mysqli_fetch_assoc($result5)){
+											
 											$service_type = $row["service_type"];
-											echo '<td>'.$service_type.'</td>';
-										} else {
-											echo '<td></td>'; 
+											
+											echo '<td>',$service_type,'</td>';
 										}
 									}
-
+									
 									$query6 = "SELECT staff_name FROM staff WHERE staff_id=$staff_id";
+									
 									if($result6 = mysqli_query($query1,$query6)){
+										
 										if($row = mysqli_fetch_assoc($result6)){
+											
 											$staff_name = $row["staff_name"];
-											echo '<td>'.$staff_name.'</td>';
-										} else {
-											echo '<td></td>'; 
+											
+											echo '<td>',$staff_name,'</td>';
 										}
 									}
-
+									
 									$query7 = "SELECT item_name FROM parts WHERE parts_id=$parts_id";
+									
 									if($result7 = mysqli_query($query1,$query7)){
+										
 										if($row = mysqli_fetch_assoc($result7)){
+											
 											$item_name = $row["item_name"];
-											echo '<td>'.$item_name.'</td>';
-										} else {
-											echo '<td></td>'; 
+											
+											echo '<td>',$item_name,'</td>';
 										}
 									}
-
-									echo '<td>'.$remarks.'</td>';
-								
-									echo '
-										<td>
-											<!--loss of search function-->
-											<a href="mainIndex.php?page=edit_appointment&value='.$appointment_id.'"><img class="actionbtn" src="../include/img/action/edit.png"></a>&nbsp;
-											<a href="#"><img class="actionbtn" src="../include/img/action/search.png"></a>&nbsp;
-											<a href="../module/add_appointment/delete.php?value='.$appointment_id.'"><img class="actionbtn" src="../include/img/action/delete.png"></a>&nbsp;
-										</td>
-									';
+									
+									echo '<td>',$remarks,'</td>';
+									
 								echo '</tr>';
 							}
 						}
 					?>
-				</tbody>
-			</table>
+				
+		            <tr>
+						<td><input type="checkbox" name="check[]" value="" id=""></td>
+		                <td>02</td>
+		                <td>20/05/2018</td>
+		                <td>13:00</td>
+		                <td>ALEX</td>
+		                <td>HONDA CIVIC</td>
+		                <td>ENGINE OIL</td>
+		                <td>JOHN</td>
+		                <td>OIL</td>
+		                <td>N/A</td>
+		            </tr>
+		        </tbody>
+		    </table>
 		</div>
 	</div>
 </main>
-</body>
 
 <script src="../include/js/jquery-2.1.3.min.js"></script>
 <script src="../include/js/bootstrap.min.js"></script>

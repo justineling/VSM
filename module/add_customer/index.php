@@ -133,7 +133,8 @@ $query1 = $connect;
 				</div>
 				<div class="col-12" style="margin-top: 5px;">
 					<input type="Submit" name="Submit" class="btn btn-green" value="SAVE">&nbsp;
-					<a type="button" class="btn btn-green" href="#" onclick="discardForm()" style="background-color: red;">DISCARD</a>&nbsp;
+				
+					<a type="button" class="btn btn-green" href="#" style="background-color:#cccccc !important;">DISCARD</a>&nbsp;
 				</div>
 			</form>
 		</div>
@@ -333,7 +334,7 @@ $query1 = $connect;
 				
 				<div class="col-12" style="margin-top: 5px;">
 					<input type="submit" name="submit1" class="btn btn-green" value="SAVE">&nbsp;
-					<a type="button" class="btn btn-green" href="#" onclick="discardForm()" style="background-color: red;">DISCARD</a>&nbsp;
+					<a type="button" class="btn btn-green" href="#" style="background-color:#cccccc !important;">DISCARD</a>&nbsp;
 				</div>
 				
 			</form>
@@ -351,9 +352,5 @@ $query1 = $connect;
 	}
 	
 	document.getElementById("1").click();
-
-	function discardForm() {
-        location.reload();
-    }
 	
 </script>
