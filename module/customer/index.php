@@ -1,33 +1,6 @@
 <?php
 include "../include/connect.php";
-
 $query1 = $connect;
-
-if (!$connect) {
-    die("Database connection failure: " . mysqli_connect_error());
-}
-
-/*
-if(isset($_GET['value'])) {
-    $customer_id = $_GET['value'];
-    $query = "SELECT * FROM customer WHERE customer_id = ?";
-    $stmt = mysqli_prepare($connect, $query);
-    mysqli_stmt_bind_param($stmt, "i", $customer_id);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    
-    if (!$result) {
-        die("Database query failure: " . mysqli_error($connect));
-    }
-
-    if(mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-    } else {
-        echo "No customer found with the given ID.";
-    }
-}
-*/
-
 ?>
 
 <link rel="stylesheet" href="../include/css/css.css">
@@ -166,9 +139,8 @@ if(isset($_GET['value'])) {
 								echo '<td>'.$row["remarks"].'</td>';
 								echo '
 									<td>
-									<!--loss of search function-->
-										<a href="mainIndex.php?page=edit_customer&value='.$row["customer_id"].'"><img class="actionbtn" src="../include/img/action/edit.png"></a>&nbsp;
-										<a href="#"><img class="actionbtn" src="../include/img/action/search.png"></a>&nbsp;
+										<!--<a href="#"><img class="actionbtn" src="../include/img/action/edit.png"></a>&nbsp;
+										<a href="#"><img class="actionbtn" src="../include/img/action/search.png"></a>&nbsp;-->
 										<a href="../module/add_customer/delete.php?value='.$row["customer_id"].'"><img class="actionbtn" src="../include/img/action/delete.png"></a>&nbsp;
 									</td>
 								';

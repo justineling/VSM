@@ -315,93 +315,81 @@
         </div>
       </nav>
       <?php 
-        if ($page == 'customer') {
+          if ($page == 'customer') {
              include "../module/customer/index.php";
           }
-        else if ($page == 'add_customer') {
-              include "../module/add_customer/index.php"; 
-            }
-        else if ($page == 'edit_customer') {
-              include "../module/edit_customer/index.php"; 
-            }
-        else if ($page == 'vehicle') {
-              include "../module/vehicle/index.php"; 
-            }
-        else if ($page == 'add_vehicle') {
-              include "../module/add_vehicle/index.php"; 
-            }
-        else if ($page == 'edit_vehicle') {
-              include "../module/edit_vehicle/index.php"; 
-            }
-        else if ($page == 'appointment') {
-              include "../module/appointment/index.php"; 
-            }
-        else if ($page == 'add_appointment') {
-              include "../module/add_appointment/index.php"; 
-            }
-        else if ($page == 'edit_appointment') {
-              include "../module/edit_appointment/index.php"; 
-            }
-        else if ($page == 'jobsheet') {
-              include "../module/jobsheet/index.php"; 
-            }
-        else if ($page == 'add_jobsheet') {
-              include "../module/jobsheet/add_jobsheet.php"; 
-            }
-        else if ($page == 'job_board') {
-              include "../module/job_board/index.php"; 
-            }
-        else if ($page == 'quotation') {
-              include "../module/quotation/index.php"; 
-            }
-        else if ($page == 'billing') {
-              include "../module/billing/index.php"; 
-            }
-        else if ($page == 'parts') {
-              include "../module/parts/index.php"; 
-            }
-        else if ($page == 'add_parts') {
-              include "../module/parts/add_parts.php"; 
-            }
-        else if ($page == 'add_save_parts') {
-              include "../module/parts/add_save_parts.php"; 
-            }
-        else if ($page == 'edit_parts') {
-              include "../module/parts/edit_parts.php"; 
-            }
-        else if ($page == 'edit_save_parts') {
-              include "../module/parts/edit_save_parts.php"; 
-            }
-        else if ($page == 'delete_part') {
-              include "../module/parts/delete_parts.php"; 
-            }
-        else if ($page == 'services') {
-              include "../module/parts/services.php"; 
-            }
-        else if ($page == 'add_service') {
-              include "../module/parts/add_service.php"; 
-            }
-        else if ($page == 'edit_services') {
-              include "../module/parts/edit_services.php"; 
-            }
-        else if ($page == 'edit_save_services') {
-              include "../module/parts/edit_save_services.php"; 
-            }
-        else if ($page == 'delete_service') {
-              include "../module/parts/delete_service.php"; 
-            }
-        else if ($page == 'report') {
-              include "../module/report/index.php"; 
-            }
-        else if ($page == 'setting') {
-              include "../module/setting/index.php"; 
-            }
-            else if ($page == 'user_access') {
-              include "../module/setting/user_access.php"; 
-            }
-        else if ($page == 'running_no') {
-              include "../module/setting/running_no.php"; 
-            }
+		  else if ($page == 'add_customer') {
+             include "../module/add_customer/index.php"; 
+          }
+		  else if ($page == 'vehicle') {
+             include "../module/vehicle/index.php"; 
+          }
+		  else if ($page == 'add_vehicle') {
+             include "../module/add_vehicle/index.php"; 
+          }
+		  else if ($page == 'appointment') {
+             include "../module/appointment/index.php"; 
+          }
+		  else if ($page == 'jobsheet') {
+             include "../module/jobsheet/index.php"; 
+          }
+      else if ($page == 'add_jobsheet') {
+             include "../module/jobsheet/add_jobsheet.php"; 
+          }
+		  else if ($page == 'job_board') {
+             include "../module/job_board/index.php"; 
+          }
+		  else if ($page == 'quotation') {
+             include "../module/quotation/index.php"; 
+          }
+		  else if ($page == 'billing') {
+             include "../module/billing/index.php"; 
+          }
+		  else if ($page == 'parts') {
+             include "../module/parts/index.php"; 
+          }
+       else if ($page == 'add_parts') {
+             include "../module/parts/add_parts.php"; 
+          }
+      else if ($page == 'add_save_parts') {
+             include "../module/parts/add_save_parts.php"; 
+          }
+      else if ($page == 'edit_parts') {
+             include "../module/parts/edit_parts.php"; 
+          }
+      else if ($page == 'edit_save_parts') {
+             include "../module/parts/edit_save_parts.php"; 
+          }
+       else if ($page == 'delete_part') {
+             include "../module/parts/delete_parts.php"; 
+          }
+      else if ($page == 'services') {
+             include "../module/parts/services.php"; 
+          }
+      else if ($page == 'add_service') {
+             include "../module/parts/add_service.php"; 
+          }
+      else if ($page == 'edit_services') {
+             include "../module/parts/edit_services.php"; 
+          }
+      else if ($page == 'edit_save_services') {
+             include "../module/parts/edit_save_services.php"; 
+          }
+      else if ($page == 'delete_service') {
+             include "../module/parts/delete_service.php"; 
+          }
+      else if ($page == 'report') {
+             include "../module/report/index.php"; 
+          }
+		  else if ($page == 'setting') {
+             include "../module/setting/index.php"; 
+          }
+          else if ($page == 'user_access') {
+             include "../module/setting/user_access.php"; 
+          }
+		  else if ($page == 'running_no') {
+             include "../module/setting/running_no.php"; 
+          }
 		  
       ?>
       <div class="col-2 fixed-bottom float-left" style="background-color: #fff;">
