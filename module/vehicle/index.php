@@ -118,8 +118,9 @@ $query1 = $connect;
 								echo '<td>'.$row["cc"].'</td>';
 								echo '
 									<td>
-										<!--<a href="#"><img class="actionbtn" src="../include/img/action/edit.png"></a>&nbsp;
-										<a href="#"><img class="actionbtn" src="../include/img/action/search.png"></a>&nbsp;-->
+									<!--loss of edit and search function-->
+									<a href="mainIndex.php?page=edit_vehicle&value='.$row["vehicle_id"].'"><img class="actionbtn" src="../include/img/action/edit.png"></a>&nbsp;
+										<a href="#"><img class="actionbtn" src="../include/img/action/search.png"></a>&nbsp;
 										<a href="../module/add_vehicle/delete.php?value='.$row["vehicle_id"].'"><img class="actionbtn" src="../include/img/action/delete.png"></a>&nbsp;
 									</td>
 								';

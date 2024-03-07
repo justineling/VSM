@@ -36,10 +36,10 @@ if (isset($_GET["Submit"])) {
     $rowMec = mysqli_fetch_assoc($resultMec);
     $staff_id = $rowMec['staff_id'];
 
-    $queryPart = "SELECT parts_id FROM parts WHERE item_name = '$pre_assign_parts'";
+    $queryPart = "SELECT part_id FROM parts WHERE item_name = '$pre_assign_parts'";
     $resultPart = mysqli_query($query1, $queryPart);
     $rowPart = mysqli_fetch_assoc($resultPart);
-    $parts_id = $rowPart['parts_id'];
+    $part_id = $rowPart['part_id'];
 
     // Perform insert operation
     $updateQuery = "UPDATE appointment 
@@ -47,7 +47,7 @@ if (isset($_GET["Submit"])) {
                     vehicle_id = '$vehicle_id', 
                     service_id = '$service_id', 
                     staff_id = '$staff_id', 
-                    parts_id = '$parts_id', 
+                    parts_id = '$part_id', 
                     date = '$date', 
                     time = '$time', 
                     remarks = '$remarks' 

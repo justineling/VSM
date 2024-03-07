@@ -33,14 +33,14 @@ $resultMec = mysqli_query($query1, $queryMec);
 $rowMec = mysqli_fetch_assoc($resultMec);
 $staff_id = $rowMec['staff_id'];
 
-$queryPart = "SELECT parts_id FROM parts WHERE item_name = '$pre_assign_parts'";
+$queryPart = "SELECT part_id FROM parts WHERE item_name = '$pre_assign_parts'";
 $resultPart = mysqli_query($query1, $queryPart);
 $rowPart = mysqli_fetch_assoc($resultPart);
-$parts_id = $rowPart['parts_id'];
+$part_id = $rowPart['part_id'];
 
 // Perform insert operation
 $insertQuery = "INSERT INTO appointment (customer_id, vehicle_id, service_id, staff_id, parts_id, date, time, remarks) 
-                VALUES ('$customer_id', '$vehicle_id', '$service_id', '$staff_id', '$parts_id', '$date', '$time', '$remarks')";
+                VALUES ('$customer_id', '$vehicle_id', '$service_id', '$staff_id', '$part_id', '$date', '$time', '$remarks')";
 
 if (mysqli_query($query1, $insertQuery)) {
     echo "<script>window.location='../../main/mainIndex.php?page=appointment'</script>";

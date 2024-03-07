@@ -44,7 +44,7 @@ $query1 = $connect;
 
 <main role="main" class="col-md-12 ml-sm-0 col-lg-12 pt-0 px-0" style="background-color: white;">
   <div class="col-12 title" style="padding-top: 10px;">
-    <h4 style="color: #008ae6; "><img src="" style=""> ADD PART</h4>
+    <h4 style="color: #008ae6; "><img src="" style=""> ADD STOCK</h4>
   </div>
 
   <div class="container">
@@ -52,49 +52,56 @@ $query1 = $connect;
       <div class="col-lg-9">
         <div class="card">
           <div class="card-body">
-            <form id="addPartForm" action="../module/parts/add_save_parts.php" method="post">
-              <table id="partTable" style="border: 1px solid transparent; width: 100%;">
+            <form id="addStockForm" action="../module/stock/add_save_stock.php" method="post">
+              <table id="stockTable" style="border: 1px solid transparent; width: 100%;">
                 <tbody>
                   <tr class="mt-3">
-                  <td style="width: auto;">Part Code:</td>
-                    <td style="width: 80%;"><input type="text" name="pcode" style="width: 100%;" required></td>
+                    <td style="width: auto;">Category:</td>
+                    <td style="width: 80%;"><input type="text" name="stkcategpry" style="width: 100%;" required></td>
                   </tr>
-
                   <tr class="mt-3">
-                    <td style="width: auto;">Part Name: </td>
-                    <td style=" width: 80%;"><input type="text" name="pname" style="width: 100%;" required="" ></td>
-                  </tr>
-
-                  <tr>
-                    <td style="width: 30%;">Cost: </td>
-                    <td style=" width: 70%;"><input type="text" name="pcost" style="width: 100%;" required="" ></td>
-                  </tr>
-
-                  <tr>
-                    <td style="width: 30%;">Description: </td>
-                    <td style=" width: 70%;"><textarea style="width: 100%; height: 150px;" name="pdes" required=""></textarea></td>
-                  </tr>
-
-                  <tr>
-                    <td style="width: 30%;">S.O.H: </td>
-                    <td style=" width: 70%;"><textarea style="width: 100%; height: 150px;" name="psoh" required=""></textarea></td>
-                  </tr>
-
-                  <tr>
-                    <td style="width: 30%;">Type: </td>
-                    <td style=" width: 70%;"><input type="text" name="ptype" style="width: 100%;" required="" ></td>
+                    <td style="width: auto;">Item Name:</td>
+                    <td style="width: 80%;"><input type="text" name="stkitem" style="width: 100%;" required></td>
                   </tr>
                   <tr>
-                    <td style="width: 30%;">Selling Price: </td>
-                    <td style=" width: 70%;"><input type="text" name="psellp" style="width: 100%;" required="" ></td>
+                    <td style="width: 30%;">Cost:</td>
+                    <td style="width: 70%;"><input type="text" name="stkcost" style="width: 100%;" required></td>
                   </tr>
                   <tr>
-                    <td style="width: 30%;">Barcode: </td>
-                    <td style=" width: 70%;"><input type="text" name="pbar" style="width: 100%;" required="" ></td>
+                    <td style="width: 30%;">Sell:</td>
+                    <td style="width: 70%;"><input type="text" name="stksell" style="width: 100%;" required></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 30%;">Unit:</td>
+                    <td style="width: 70%;"><input type="text" name="stkunit" style="width: 100%;" required></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 30%;">UOM:</td>
+                    <td style="width: 70%;"><input type="text" name="stkuom" style="width: 100%;" required></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 30%;">In:</td>
+                    <td style="width: 70%;"><input type="date" name="stkindate" id="stkindate" style="width: 100%;" required></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 30%;">Out:</td>
+                    <td style="width: 70%;"><input type="date" name="stkoutdate" id="stkoutdate" style="width: 100%;" required></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 30%;">Vehicle No:</td>
+                    <td style="width: 70%;"><input type="text" name="stkvehicle" style="width: 100%;" required></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 30%;">Model:</td>
+                    <td style="width: 70%;"><input type="text" name="stkmodel" style="width: 100%;" required></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 30%;">Owner:</td>
+                    <td style="width: 70%;"><input type="text" name="stkowner" style="width: 100%;" required></td>
                   </tr>
                 </tbody>
               </table>
-      
+              
               <div style="margin-top: 20px;">
                 <input id="discardBtn" type="button" class="btn btn-danger mr-2" value="DISCARD" href="#"></a>
                 <input type="submit" name="save" class="btn btn-success" value="SAVE">
@@ -149,6 +156,6 @@ $query1 = $connect;
 
   document.getElementById("discardBtn").addEventListener("click", function(event) {
 			event.preventDefault(); 
-			document.getElementById("addPartForm").reset();
+			document.getElementById("addStockForm").reset();
     	});
 </script>

@@ -29,7 +29,7 @@ $query1 = $connect;
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 	<div class="row row2">
 		<div class="col-12 title">
-			<b> VEHICLE</b>
+			<b>ADD VEHICLE</b>
 			
 		</div>
 		<div class="col-12" id="message">

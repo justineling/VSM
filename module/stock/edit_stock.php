@@ -47,7 +47,7 @@ $query1 = $connect;
 <main role="main" class="col-md-12 ml-sm-0 col-lg-12 pt-0 px-0" style="background-color: white;">
 
   <div class="col-12 title" style="padding-top: 10px;">
-    <h4 style="color: #008ae6; "><img src="" style=""> EDIT SERVICE</h4>
+    <h4 style="color: #008ae6; "><img src="" style=""> EDIT STOCK</h4>
     </div>
 
   <div class='' style="padding: 10px 10px;">
@@ -57,44 +57,64 @@ $query1 = $connect;
         <div class='card-body'>
           <table style="border: 1px solid transparent; width: 100%;">
             <?php 
-             $srv_q = "SELECT * FROM service WHERE service_id='".$_GET['id']."'";
-             $srv_res = mysqli_query($connect, $srv_q);
-             $srv_row = mysqli_fetch_array($srv_res);
+             $stk_q = "SELECT * FROM stock WHERE id='".$_GET['id']."'";
+             $stk_res = mysqli_query($connect, $stk_q);
+             $stk_row = mysqli_fetch_array($stk_res);
             ?>
-            <form id = "editServiceForm" action="../module/parts/edit_save_services.php" method="post">
-              <tbody>
+            <form id = "editStockForm" action="../module/stock/edit_save_stock.php" method="post">
+            <tbody>
                 <tr class="mt-3">
-                    <td style="width: auto;">Service Code: </td>
-                    <td style="width: 80%;"><input type="text" name="scode" style="width: 100%;" value="<?php echo $srv_row['service_code'] ?>" placeholder="<?php echo $srv_row['service_code'] ?>"></td>
+                    <td style="width: auto;">Category: </td>
+                    <td style="width: 80%;"><input type="text" name="stkcategory" style="width: 100%;" value="<?php echo $stk_row['category'] ?>" placeholder="<?php echo $stk_row['category'] ?>"></td>
                 </tr>
                 <tr>
-                    <td style="width: auto;">Service Name: </td>
-                    <td style="width: 80%;"><input type="text" name="sname" style="width: 100%;" value="<?php echo $srv_row['service_name'] ?>" placeholder="<?php echo $srv_row['service_name'] ?>"></td>
-                </tr>
-                <tr>
-                    <td style="width: 30%;">Description: </td>
-                    <td style="width: 70%;"><textarea name="sdes" style="width: 100%; height: 150px;" placeholder="<?php echo $srv_row['service_description'] ?>"><?php echo $srv_row['service_description'] ?></textarea></td>
-                </tr>
-                <tr>
-                    <td style="width: 30%;">Type: </td>
-                    <td style="width: 70%;"><input type="text" name="stype" style="width: 100%;" value="<?php echo $srv_row['service_type'] ?>" placeholder="<?php echo $srv_row['service_type'] ?>"></td>
+                    <td style="width: auto;">Item Name: </td>
+                    <td style="width: 80%;"><input type="text" name="stkitem" style="width: 100%;" value="<?php echo $stk_row['item'] ?>" placeholder="<?php echo $stk_row['item'] ?>"></td>
                 </tr>
                 <tr>
                     <td style="width: 30%;">Cost: </td>
-                    <td style="width: 70%;"><input type="text" name="scost" style="width: 100%;" value="<?php echo $srv_row['service_cost'] ?>" placeholder="<?php echo $srv_row['service_cost'] ?>"></td>
+                    <td style="width: 70%;"><input type="text" name="stkcost" style="width: 100%;" value="<?php echo $stk_row['cost'] ?>" placeholder="<?php echo $stk_row['cost'] ?>"></td>
                 </tr>
                 <tr>
-                    <td style="width: 30%;">Barcode: </td>
-                    <td style="width: 70%;"><input type="text" name="sbar" style="width: 100%;" value="<?php echo $srv_row['service_barcode'] ?>" placeholder="<?php echo $srv_row['service_barcode'] ?>"></td>
+                    <td style="width: 30%;">Sell: </td>
+                    <td style="width: 70%;"><input type="text" name="stksell" style="width: 100%;" value="<?php echo $stk_row['sell'] ?>" placeholder="<?php echo $stk_row['sell'] ?>"></td>
                 </tr>
-              </tbody>
+                <tr>
+                    <td style="width: 30%;">Unit: </td>
+                    <td style="width: 70%;"><input type="text" name="stkunit" style="width: 100%;" value="<?php echo $stk_row['unit'] ?>" placeholder="<?php echo $stk_row['unit'] ?>"></td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">UOM: </td>
+                    <td style="width: 70%;"><input type="text" name="stkuom" style="width: 100%;" value="<?php echo $stk_row['uom'] ?>" placeholder="<?php echo $stk_row['uom'] ?>"></td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">In Date: </td>
+                    <td style="width: 70%;"><input type="date" name="stkin_date" style="width: 100%;" value="<?php echo $stk_row['in_date'] ?>" placeholder="<?php echo $stk_row['in_date'] ?>"></td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Out Date: </td>
+                    <td style="width: 70%;"><input type="date" name="stkout_date" style="width: 100%;" value="<?php echo $stk_row['out_date'] ?>" placeholder="<?php echo $stk_row['out_date'] ?>"></td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Vehicle No: </td>
+                    <td style="width: 70%;"><input type="text" name="stkvehicle_no" style="width: 100%;" value="<?php echo $stk_row['vehicle_no'] ?>" placeholder="<?php echo $stk_row['vehicle_no'] ?>"></td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Model: </td>
+                    <td style="width: 70%;"><input type="text" name="stkmodel" style="width: 100%;" value="<?php echo $stk_row['model'] ?>" placeholder="<?php echo $stk_row['model'] ?>"></td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">Owner: </td>
+                    <td style="width: 70%;"><input type="text" name="stkowner" style="width: 100%;" value="<?php echo $stk_row['owner'] ?>" placeholder="<?php echo $stk_row['owner'] ?>"></td>
+                </tr>
+            </tbody>
           </table>
               <div>
                 <div style="float: right;">
-                  <input type="hidden" name="sid" value="<?php echo $srv_row['service_id'] ?>">
-                  <input id="discardBtn" type="button" class="btn btn-green" value="DISCARD" style="background-color: red;">&nbsp;
-                  <input type="submit" class="btn btn-green" style="float: right" value="SAVE" name="save">&nbsp;
-              </div>
+                    <input type="hidden" name="stkid" value="<?php echo $stk_row['id'] ?>">
+                    <input id="discardBtn" type="button" class="btn btn-green" value="DISCARD" style="background-color: red;">&nbsp;
+                    <input type="submit" class="btn btn-green" style="float: right" value="SAVE" name="save">&nbsp;
+                </div>
             </form>
         </div>
       </div>
@@ -149,7 +169,7 @@ $query1 = $connect;
 
   document.getElementById("discardBtn").addEventListener("click", function(event) {
 			event.preventDefault(); 
-			document.getElementById("editServiceForm").reset();
+			document.getElementById("editStockForm").reset();
     	});
 </script>
 <script type="text/javascript">
@@ -170,4 +190,3 @@ $query1 = $connect;
         });
     });
 </script>
-
