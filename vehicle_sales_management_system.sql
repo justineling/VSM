@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2024 at 04:31 AM
+-- Generation Time: Mar 07, 2024 at 05:17 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -277,19 +277,26 @@ CREATE TABLE `job_board` (
 --
 
 CREATE TABLE `parts` (
-  `part_id` int(11) NOT NULL,
-  `item_code` varchar(32) DEFAULT NULL,
-  `item_name` varchar(255) DEFAULT '',
+  `parts_id` int(11) NOT NULL,
+  `parts_code` varchar(255) DEFAULT NULL,
+  `item_name` varchar(255) DEFAULT NULL,
+  `cost` decimal(10,0) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `soh` varchar(255) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `sell_price` varchar(255) DEFAULT NULL,
+  `barcode` char(13) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `parts`
 --
 
-INSERT INTO `parts` (`part_id`, `item_code`, `item_name`, `category`, `price`) VALUES
-(1, 'F0001', 'engine oil', 'oil', 200.00);
+INSERT INTO `parts` (`parts_id`, `parts_code`, `item_name`, `cost`, `description`, `soh`, `category`, `sell_price`, `barcode`) VALUES
+(1, 'SC001', 'NAME1', 111, 'DES1', 'SOH 1', 'ABC', '100', '12345'),
+(4, 'PC 100', 'NAME 100', 100, 'DES 100', 'SOH 100', 'XYZ', '100', '101010101'),
+(5, 'PC 888', 'QWDFCQEW', 0, 'VEWV', 'EWEWQ', 'WEW', '888', '2342342234'),
+(6, 'PC 10000', 'QWEFCSEW', 721, 'EDIT-0721', 'EDIT', 'EDIT', '721', '721');
 
 -- --------------------------------------------------------
 
@@ -351,10 +358,11 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`service_id`, `service_type`, `service_code`, `service_name`, `service_cost`, `service_description`, `service_barcode`) VALUES
-(1, 'full service', NULL, NULL, NULL, NULL, NULL),
-(2, 'Oil Change', NULL, NULL, NULL, NULL, NULL),
-(3, 'Brake Inspection', NULL, NULL, NULL, NULL, NULL),
-(4, 'Engine Tune-up', NULL, NULL, NULL, NULL, NULL);
+(5, 'Type A', 'SC001', 'Service 1', 100, 'Description for Service 1', '1234567890'),
+(6, 'Type B', 'SC002', 'Service 2', 150, 'Description for Service 2', '0987654321'),
+(7, 'Type C', 'SC003', 'Service 3', 200, 'Description for Service 3', '9876543210'),
+(8, 'Type A', 'SC004', 'Service 4', 120, 'Description for Service 4', '6789054321'),
+(11, 'EWFEW', 'SERVICE 700', '700', 888, 'DES 700', '777777777');
 
 -- --------------------------------------------------------
 
@@ -377,6 +385,42 @@ INSERT INTO `staff` (`staff_id`, `staff_name`, `position`) VALUES
 (2, 'John Doe', 'Manager'),
 (3, 'Jane Smith', 'Technician'),
 (4, 'Michael Johnson', 'Assistant');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stock`
+--
+
+CREATE TABLE `stock` (
+  `id` int(11) NOT NULL,
+  `category` varchar(255) DEFAULT NULL,
+  `item` varchar(255) DEFAULT NULL,
+  `cost` decimal(10,2) DEFAULT NULL,
+  `sell` decimal(10,2) DEFAULT NULL,
+  `unit` int(11) DEFAULT NULL,
+  `uom` varchar(255) DEFAULT NULL,
+  `in_date` date DEFAULT NULL,
+  `out_date` date DEFAULT NULL,
+  `vehicle_no` varchar(255) DEFAULT NULL,
+  `model` varchar(255) DEFAULT NULL,
+  `owner` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `stock`
+--
+
+INSERT INTO `stock` (`id`, `category`, `item`, `cost`, `sell`, `unit`, `uom`, `in_date`, `out_date`, `vehicle_no`, `model`, `owner`) VALUES
+(11, 'Battery', 'Supercharge Power Station', 169.70, 250.90, 0, 'PC', '2018-04-10', '2018-04-10', 'QAA 1234', 'Ford', 'Dr. Chin'),
+(12, 'Oil', 'Premium Motor Oil', 25.50, 40.00, 0, 'L', '2023-06-15', '2023-06-20', 'BBB 5678', 'Toyota', 'Ms. Johnson'),
+(13, 'Tire', 'All-Season Radial Tire', 150.00, 200.00, 0, 'PCS', '2023-07-01', '2023-07-10', 'CCC 9876', 'Honda', 'Mr. Smith'),
+(14, 'Brake', 'Ceramic Brake Pad', 80.00, 120.00, 0, 'SETS', '2023-08-10', '2023-08-15', 'DDD 2468', 'Chevrolet', 'Mrs. Lee'),
+(15, 'Spark Plug', 'Platinum Spark Plug', 12.99, 25.00, 0, 'PCS', '2023-09-05', '2023-09-10', 'EEE 1357', 'Ford', 'Mr. Wang'),
+(16, 'Suspension', 'Coilover Suspension Kit', 800.00, 1200.00, 0, 'SETS', '2023-10-20', '2023-10-25', 'FFF 8642', 'Subaru', 'Mr. Tan'),
+(17, 'Exhaust', 'Stainless Steel Exhaust System', 500.00, 750.00, 0, 'PCS', '2023-11-15', '2023-11-20', 'GGG 9753', 'Audi', 'Ms. Garcia'),
+(18, 'Coolant', 'Engine Coolant', 15.00, 30.00, 0, 'L', '2023-12-05', '2023-12-10', 'HHH 3698', 'Volkswagen', 'Mr. Patel'),
+(19, 'Filter Test', 'Air Filter Test', 80.50, 200.00, 86, 'SCP', '2024-02-26', '2024-03-04', 'III 4567', 'BMW TEST', 'Mrs. Christinane');
 
 -- --------------------------------------------------------
 
@@ -512,7 +556,7 @@ ALTER TABLE `job_board`
 -- Indexes for table `parts`
 --
 ALTER TABLE `parts`
-  ADD PRIMARY KEY (`part_id`);
+  ADD PRIMARY KEY (`parts_id`);
 
 --
 -- Indexes for table `position`
@@ -537,6 +581,12 @@ ALTER TABLE `service`
 --
 ALTER TABLE `staff`
   ADD PRIMARY KEY (`staff_id`);
+
+--
+-- Indexes for table `stock`
+--
+ALTER TABLE `stock`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `vehicle`
@@ -618,7 +668,7 @@ ALTER TABLE `job_board`
 -- AUTO_INCREMENT for table `parts`
 --
 ALTER TABLE `parts`
-  MODIFY `part_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `parts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `position`
@@ -630,13 +680,19 @@ ALTER TABLE `position`
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
   MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `stock`
+--
+ALTER TABLE `stock`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `vehicle`
