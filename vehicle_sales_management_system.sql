@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2024 at 05:17 AM
+-- Generation Time: Mar 08, 2024 at 03:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -169,18 +169,23 @@ CREATE TABLE `customer` (
   `government_private` varchar(255) DEFAULT NULL,
   `website` varchar(255) DEFAULT NULL,
   `uploaded_ic` varchar(255) DEFAULT NULL,
-  `remarks` varchar(255) DEFAULT NULL
+  `remarks` varchar(255) DEFAULT NULL,
+  `nickname` varchar(255) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `outstanding` varchar(50) DEFAULT NULL,
+  `plate_no` varchar(11) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`customer_id`, `account_code`, `company_name`, `name`, `ic`, `personal_contact`, `personal_email`, `department`, `office_contact`, `office_fax`, `email`, `address`, `government_private`, `website`, `uploaded_ic`, `remarks`) VALUES
-(5, 0, '12312312', '12', '3213', '123123123', '323', '3123', '21312', '3123', '323', '3213', 'PRIVATE', '312', '5_VSM.jpg', '123123'),
-(6, 111, '', '111', '12312', '1', '321312', '', '', '', '11', '111', '', '', '6_VSM.jpg', '123123'),
-(7, 12312, '312312', '312312', '12321312', '123213', '323123', '312', '312312', '3123123', '123123', '3123123', 'GOVERMENT', '12312312', '7_VSM.jpg', '21312'),
-(8, 11, '', '11', '11', '1', '23123', '', '', '', '111', '111', '', '', '8_VSM.jpg', '11');
+INSERT INTO `customer` (`customer_id`, `account_code`, `company_name`, `name`, `ic`, `personal_contact`, `personal_email`, `department`, `office_contact`, `office_fax`, `email`, `address`, `government_private`, `website`, `uploaded_ic`, `remarks`, `nickname`, `type`, `outstanding`, `plate_no`, `status`) VALUES
+(5, 0, '12312312', '12', '3213', '123123123', '323', '3123', '21312', '3123', '323', '3213', 'PRIVATE', '312', '5_VSM.jpg', '123123', NULL, NULL, NULL, NULL, NULL),
+(6, 111, '', '111', '12312', '1', '321312', '', '', '', '11', '111', '', '', '6_VSM.jpg', '123123', NULL, NULL, NULL, NULL, NULL),
+(7, 12312, '312312', '312312', '12321312', '123213', '323123', '312', '312312', '3123123', '123123', '3123123', 'GOVERMENT', '12312312', '7_VSM.jpg', '21312', NULL, NULL, NULL, NULL, NULL),
+(8, 11, '', '11', '11', '1', '23123', '', '', '', '111', '111', '', '', '8_VSM.jpg', '11', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -430,7 +435,7 @@ INSERT INTO `stock` (`id`, `category`, `item`, `cost`, `sell`, `unit`, `uom`, `i
 
 CREATE TABLE `vehicle` (
   `vehicle_id` int(11) NOT NULL,
-  `plate_no` int(11) DEFAULT NULL,
+  `plate_no` varchar(11) DEFAULT NULL,
   `engine_no` varchar(11) DEFAULT NULL,
   `brand` varchar(255) DEFAULT NULL,
   `last_service` varchar(255) DEFAULT NULL,
@@ -446,11 +451,11 @@ CREATE TABLE `vehicle` (
 --
 
 INSERT INTO `vehicle` (`vehicle_id`, `plate_no`, `engine_no`, `brand`, `last_service`, `model_type`, `mileage`, `owner`, `colour`, `cc`) VALUES
-(5, 1231, 'rewrw', 'ew', 'rrwew', '2wfew', 'ewrew', 'ewrfew', 'erewr', 'rwerwe'),
-(6, 321, '88', '8888', '888', '888', '88', '888', '888', '888'),
-(7, 654, '324', 'defcdsg', 'sdfdsf', 'sdgsd', 'dsf', 'gsdg', 'dsgds', 'dsgsdg'),
-(8, 88888, '888', '888888888', '888', '8888888888', '88888', '88', '88', '88888888'),
-(9, 23423, '23432', 'w', '3wwfe', 'wef', 'werw', 'fffffsf', 'we', 'ew');
+(5, '1231', 'rewrw', 'ew', 'rrwew', '2wfew', 'ewrew', 'ewrfew', 'erewr', 'rwerwe'),
+(6, '321', '88', '8888', '888', '888', '88', '888', '888', '888'),
+(7, '654', '324', 'defcdsg', 'sdfdsf', 'sdgsd', 'dsf', 'gsdg', 'dsgds', 'dsgsdg'),
+(8, '88888', '888', '888888888', '888', '8888888888', '88888', '88', '88', '88888888'),
+(9, '23423', '23432', 'w', '3wwfe', 'wef', 'werw', 'fffffsf', 'we', 'ew');
 
 -- --------------------------------------------------------
 
