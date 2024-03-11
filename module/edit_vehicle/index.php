@@ -115,30 +115,8 @@
 							<input type="text" name="colour" style="width:100%;" placeholder="<?php echo isset($row['colour']) ? $row['colour'] : ''; ?>" required>
 						</td>
 					</tr>
-
-					<tr>
-						<td class="subtitle" width="16%">
-							TYPE
-						</td>
-						<td width="30%">
-							<input type="text" name="type" style="width:100%;" placeholder="<?php echo isset($row['type']) ? $row['type'] : ''; ?>" required>
-						</td>
-					<td width="3%"></td>
-						<td class="subtitle" width="16%">
-							YEAR
-						</td>
-						<td width="30%">
-							<input type="text" name="year" style="width:100%;" placeholder="<?php echo isset($row['year']) ? $row['year'] : ''; ?>" required>
-						</td>
-					</tr>
 					
 					<tr>
-						<td class="subtitle" width="16%">
-							REMARKS
-						</td>
-						<td width="30%">
-							<input type="text" name="remarks" style="width:100%;" placeholder="<?php echo isset($row['remarks']) ? $row['remarks'] : ''; ?>" required>
-						</td>
 						<td class="subtitle" width="16%">
 							CC
 						</td>

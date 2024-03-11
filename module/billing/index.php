@@ -55,6 +55,9 @@ $query1 = $connect;
 	<div class="row row2">
 		<div class="col-12 title">
 			<b>BILLING</b>
+			<div style="float:right;">
+				<a type="button" class="btn btn-green" href="mainIndex.php?page=add_billing">ADD</a>&nbsp; 
+			</div>
 		</div>
 		
 		<div class="col-12">
@@ -73,6 +76,7 @@ $query1 = $connect;
 		                <th>TOTAL</th>
 		                <th>CREATED AT</th>
 		                <th>STATUS</th>
+						<th>STAFF</th>
 						<th>REMARKS</th>
 						<th style="width:10%;background-image:none !important;">ACTION</th>
 		            </tr>
@@ -90,18 +94,19 @@ $query1 = $connect;
 		                <th>TOTAL</th>
 		                <th>CREATED AT</th>
 		                <th>STATUS</th>
+						<th>STAFF</th>
 						<th>REMARKS</th>
 						<th style="width:10%;background-image:none !important;"></th>
 		            </tr>
 		        </tfoot>
 		        <tbody>
 				<?php
-						
-						$query = "
+						$counter = '';
+						$query2 = "
 							SELECT
 								b.billing_no,
 								b.invoice_no,
-								b.customer_id,
+								c.customer_id,
 								c.name,
 								v.vehicle_id,
 								v.plate_no,
@@ -111,6 +116,8 @@ $query1 = $connect;
 								b.total,
 								b.created_at,
 								b.status,
+								s.staff_id,
+								s.staff_name,
 								b.remarks
 							FROM
 								billing b
@@ -118,15 +125,21 @@ $query1 = $connect;
 								customer c ON b.customer_id = c.customer_id
 							JOIN
 								vehicle v ON b.vehicle_id = v.vehicle_id
+							JOIN
+								staff s ON b.staff_id = s.staff_id
 						";
 						
-						$result = mysqli_query($query1, $query);
 						
-						if ($result) {
-							while ($row = mysqli_fetch_assoc($result)) {
+						if ($result2 = mysqli_query($query1, $query2)) 
+						{
+							while ($row = mysqli_fetch_assoc($result2)) 
+							{
+
+								$counter++;
 								echo '<tr>';
 								echo '<th style="padding:0;background-image:none !important;"><input type="checkbox" name="check[]" value="" id=""></th>';
-								echo '<td>' . $row["billing_no"] . '</td>';
+								echo '<td>'.$counter.'</td>';
+								//echo '<td>' . $row["billing_no"] . '</td>';
 								echo '<td>' . $row["invoice_no"] . '</td>';
 								echo '<td>' . $row["name"] . '</td>';
 								echo '<td>' . $row["plate_no"] . '</td>';
@@ -137,16 +150,19 @@ $query1 = $connect;
 								echo '<td>' . date('d-m-Y H:i:s') . '</td>';
 								//echo '<td>' . date('d-m-Y H:i:s', strtotime($row["created_at"])) . '</td>';
 								echo '<td>' . $row["status"] . '</td>';
+								echo '<td>' . $row["staff_name"] . '</td>';
 								echo '<td>' . $row["remarks"] . '</td>';
 								echo '
 									<td>
-									<a class="edit-btn" href="#" data-billing-no="' . $row["billing_no"] . '"><img class="edit-btn" src="../include/img/action/edit.png"></a>&nbsp;
-									<a class="delete-btn" href="#" data-billing-no="' . $row["billing_no"] . '"><img class="delete-btn" src="../include/img/action/delete.png"></a>&nbsp;
+									<a class="edit-btn" href="mainIndex.php?page=edit_billing&value='.$row["billing_no"].'"><img class="edit-btn" src="../include/img/action/edit.png"></a>&nbsp;
+									<a class="delete-btn" href="../module/add_billing/delete.php?value='.$row["billing_no"].'"><img class="delete-btn" src="../include/img/action/delete.png"></a>&nbsp;
 									</td>
 								';
 								echo '</tr>';
 							}
-						} else {
+						} 
+						else 
+						{
 							echo "Error in query: " . mysqli_error($query1);
 						}
 						
@@ -155,32 +171,6 @@ $query1 = $connect;
 		    </table>
 		</div>
 	</div>
-
-
-	<!-- Edit Modal -->
-	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="editModalLabel">Edit Billing Information</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					
-					<form id="editForm">
-						<div class="form-group">
-							<label for="editStatus">Status</label>
-							<input type="text" class="form-control" id="editStatus" name="editStatus" required>
-						</div>
-						<button type="submit" class="btn btn-primary">Save Changes</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
 </main>
 
 <script src="../include/js/jquery-2.1.3.min.js"></script>
@@ -189,114 +179,40 @@ $query1 = $connect;
 
 <script type="text/javascript">
     $(document).ready(function() {
-        // Setup - add a text input to each footer cell
-        $('#register tfoot th').not(":eq(0), :eq(1)").each(function() {
-            var title = $(this).text();
-            $(this).html('<input type="text" class="search_input"  style="color:#000" />');
-        });
+	    // Setup - add a text input to each footer cell
+	    $('#register tfoot th').not(":eq(0), :eq(1), :eq(11)").each( function () {
+	        var title = $(this).text();
+	         $(this).html( '<input type="text" class="search_input"  style="color:#000" />' );
+	    } );
 
-        // Handling row deletion
-		$(document).on('click', 'a.delete-btn', function(e) {
-			e.preventDefault();
-			var row = $(this).closest('tr');
-			var billingNo = row.find('td:eq(1)').text(); // Assuming the billing_no is in the second column
-			var confirmation = confirm("Are you sure you want to delete billing no. " + billingNo + "?");
+	    $('#register').DataTable( {
+		    "bLengthChange": false, //disable the entries
+		    "bFilter": true,
+		    "bInfo": false,
+		    "bAutoWidth": true,
+		 	"sDom": '<"H"lTr><"datatable-scroll"t><"F"ip>' //disable search box
+	    } );
+	 
+	    // DataTable
+	    var table = $('#register').DataTable();
 
-			if (confirmation) {
-				// Perform AJAX request to delete the row in the database
-				$.ajax({
-					type: "GET",
-					url: "../module/billing/delete.php",
-					data: {
-						value: billingNo
-					},
-					success: function(response) {
-						// Handle success, update UI, etc.
-						row.remove(); // Remove the row from the DataTable
-					},
-					error: function(error) {
-						console.error("Error deleting billing:", error);
-						alert("An error occurred while deleting the billing.");
-					}
-				});
-			}
-		});
+	    // Apply the search
+	    table.columns().every( function () {
+	        var that = this;
+	 
+	        $( 'input', this.footer() ).on( 'keyup change', function () {
+	            if ( that.search() !== this.value ) {
+	                that
+	                    .search( this.value )
+	                    .draw();
+	            }
+	        });
+	    });
+	});
 
-
-		// Handling row edit
-		$(document).on('click', 'a.edit-btn', function(e) {
-			e.preventDefault();
-			var row = $(this).closest('tr');
-			var billingNo = row.find('td:eq(1)').text();
-
-			fetch("../module/billing/fetch.php?value=" + billingNo)
-				.then(response => response.text()) // Use text() instead of json()
-				.then(data => {
-					// Extract data from HTML attributes
-					var billingNo = $(data).attr('data-billing-no');
-					var status = $(data).attr('data-status');
-
-					// Populate the modal
-					$('#editStatus').val(status);
-					$('#editBillingNo').val(billingNo);
-
-					// Show the modal
-					$('#editModal').modal('show');
-				})
-				.catch(error => {
-					console.error("Error fetching billing data for edit:", error);
-					alert("An error occurred while fetching billing data for edit.");
-				});
-		});
-
-
-
-		// Handling form submission for edit
-		$('#editForm').submit(function(e) {
-			e.preventDefault();
-
-			// Serialize form data
-			var formData = $(this).serialize();
-
-
-			// Perform AJAX request to update the row in the database
-			$.ajax({
-				type: "POST",
-				url: "../module/billing/update.php",
-				data: {
-						value: formData,
-					},
-				success: function(response) {
-					console.log('Full response:', response); // Log the full response
-
-					// Split the response into status and message
-					var [status, message] = response.split('|');
-
-					// Handle success or error
-					if (status === 'success') {
-						// Update UI or show success message
-					} else {
-						console.error("Error updating billing:", message);
-						alert("An error occurred while updating the billing: " + message);
-					}
-
-					// Close the edit modal
-					$('#editModal').modal('hide');
-				},
-				error: function(error) {
-					console.error("Error updating billing:", error);
-					alert("An error occurred while updating the billing.");
-				}
-			});
-		});
-
-
-
-
-		//console.log(response);
-
-
-    });
+	$(".modalimport").click(function(){
+		$("#import_reg").modal();
+	});
 
 	$('#register').DataTable();
 

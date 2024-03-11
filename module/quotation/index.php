@@ -1,3 +1,7 @@
+<?php
+include "../include/connect.php";
+$query1 = $connect;
+?>
 
 <link rel="stylesheet" href="../include/css/css.css">
 <link rel="stylesheet" type="text/css" href="../include/DataTables/datatables.min.css"/>
@@ -47,13 +51,10 @@
 	}
 </style>
 
-<main role="main" class="col-md-9 ml-sm-0 col-lg-10 pt-2 px-2" style="background-color: white;">
+<main role="main" class="col-md-9 ml-sm-0 col-lg-12 pt-2 px-2" style="background-color: white;">
 	<div class="row row2">
 		<div class="col-12 title">
 			<b>QUOTATION</b>
-			<div style="float:right;">
-				<a type="button" class="btn btn-green" href="../main/mainIndex.php?page=addreg">ADD</a>&nbsp; 
-			</div>
 		</div>
 		
 		<div class="col-12">
@@ -71,6 +72,7 @@
 		                <th>TOTAL</th>
 		                <th>CREATED BY</th>
 		                <th>REMARKS</th>
+						<th style="width:10%;background-image:none !important;">ACTION</th>
 		            </tr>
 		        </thead>
 		        <tfoot>
@@ -86,22 +88,66 @@
 		                <th>TOTAL</th>
 		                <th>CREATED BY</th>
 		                <th>REMARKS</th>
+						<th style="width:10%;background-image:none !important;"></th>
 		            </tr>
 		        </tfoot>
 		        <tbody>
-		            <tr>
-						<td><input type="checkbox" name="check[]" value="" id=""></td>
-		                <td>01</td>
-		                <td>Q12345G</td>
-		                <td>RAYMOND</td>
-		                <td>QAA1234F</td>
-		                <td>TITLE</td>
-		                <td>RM567</td>
-		                <td>RM1234</td>
-		                <td>RM2687</td>
-		                <td>MANDY</td>
-		                <td>NA</td>
-		            </tr>
+				<?php
+						$counter = '';
+							
+						$query2 = "
+							SELECT
+								q.quotation_id,
+								q.quote_no,
+								q.customer_id,
+								c.name,
+								q.vehicle_id,
+								v.plate_no,
+								q.title,
+								q.service_amount,
+								q.parts_amount,
+								q.total,
+								q.staff_id,
+								s.staff_name,
+								q.remarks
+							FROM
+								quotation q
+							JOIN
+								customer c ON q.customer_id = c.customer_id
+							JOIN
+								vehicle v ON q.vehicle_id = v.vehicle_id
+							JOIN
+								staff s ON q.staff_id = s.staff_id
+						";
+							
+						if($result2 = mysqli_query($query1,$query2)){
+								
+							while($row = mysqli_fetch_assoc($result2)){
+								
+								$counter++;
+								echo '<tr>';
+								echo '<th style="padding:0;background-image:none !important;"><input type="checkbox" name="check[]" value="" id=""></th>';
+								echo '<td>'.$counter.'</td>';
+								echo '<td>'.$row["quote_no"].'</td>';
+								echo '<td>'.$row["name"].'</td>';
+								echo '<td>'.$row["plate_no"].'</td>';
+								echo '<td>'.$row["title"].'</td>';
+								echo '<td>'.$row["service_amount"].'</td>';
+								echo '<td>'.$row["parts_amount"].'</td>';
+								echo '<td>'.$row["total"].'</td>';
+								echo '<td>'.$row["staff_name"].'</td>';
+								echo '<td>'.$row["remarks"].'</td>';
+								echo '
+									<td>
+									<!--loss of search function-->
+										<a href="#"><img class="actionbtn" src="../include/icon/view.png"></a>&nbsp;
+										<a class="delete-btn" href="#" data-quotation-id="' . $row["quotation_id"] . '"><img class="delete-btn" src="../include/img/action/delete.png"></a>&nbsp;
+									</td>
+								';
+								echo '</tr>';
+							}
+						}
+					?>
 		        </tbody>
 		    </table>
 		</div>
@@ -147,4 +193,33 @@
 	$(".modalimport").click(function(){
 		$("#import_reg").modal();
 	});
+
+	// Handling row deletion
+	$(document).on('click', 'a.delete-btn', function(e) {
+			e.preventDefault();
+			var row = $(this).closest('tr');
+			var quotation_id = row.find('td:eq(0)').text();
+			var confirmation = confirm("Are you sure you want to delete the quotation. " +  quotation_id + "?");
+
+			if (confirmation) {
+				// Perform AJAX request to delete the row in the database
+				$.ajax({
+					type: "GET",
+					url: "../module/quotation/delete.php",
+					data: {
+						value: quotation_id
+					},
+					success: function(response) {
+						// Handle success, update UI, etc.
+						row.remove(); // Remove the row from the DataTable
+					},
+					error: function(error) {
+						console.error("Error deleting quotation:", error);
+						alert("An error occurred while deleting the quotation.");
+					}
+				});
+			}
+		});
+
+		$('#register').DataTable();
 </script>

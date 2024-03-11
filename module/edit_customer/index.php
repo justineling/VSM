@@ -62,7 +62,7 @@
 			}
 			
 			.data-field {
-            background-color: rgba(128, 128, 128, 0.3); 
+            background-color: rgba(128, 128, 128, 0.3); /* 半透明的灰色背景 */
             padding: 5px;
             border-radius: 3px;
             margin-bottom: 5px;
@@ -103,25 +103,6 @@
 									<input type="text" name="name" style="width:100%;" placeholder="<?php echo isset($row['name']) ? $row['name'] : ''; ?>" required>
 								</td>
 							</tr>
-
-							<tr>
-								<td class="subtitle" width="14%">
-									NICKNAME
-								</td>
-								<td width="30%">
-									<input type="text" name="nickname" style="width:100%;" placeholder="<?php echo isset($row['nickname']) ? $row['nickname'] : ''; ?>" required>
-								</td>
-							</tr>
-
-							<tr>
-								<td class="subtitle" width="14%">
-									TYPE
-								</td>
-								<td width="30%">
-									<input type="text" name="type" style="width:100%;" placeholder="<?php echo isset($row['type']) ? $row['type'] : ''; ?>" required>
-								</td>
-							</tr>
-
 							<tr>
 								<td class="subtitle" width="14%">
 									IC
@@ -154,43 +135,6 @@
 								<textarea name="address" cols="35" rows="3" required placeholder="<?php echo isset($row['address']) ? $row['address'] : ''; ?>"></textarea>
 								</td>
 							</tr>
-
-							<tr>
-								<td class="subtitle" width="14%">
-									OUTSTANDING
-								</td>
-								<td width="30%">
-									<input type="text" name="outstanding" style="width:100%;" placeholder="<?php echo isset($row['outstanding']) ? $row['outstanding'] : ''; ?>" required>
-								</td>
-							</tr>
-
-							<tr>
-								<td class="subtitle" width="14%">
-									NO. OF VEHICLES
-								</td>
-								<td width="30%">
-									<select name="plate_no" style="width:100%;" required>
-										<option value="">Select Vehicle</option>
-										<?php
-										$queryVeh = "SELECT plate_no FROM vehicle";
-										$result = mysqli_query($query1, $queryVeh);
-										while ($row = mysqli_fetch_assoc($result)) {
-											echo "<option value='" . $row['plate_no'] . "'>" . $row['plate_no'] . "</option>";
-										}
-										?>
-									</select>
-								</td>
-							</tr>
-
-							<tr>
-								<td class="subtitle" width="14%">
-									STATUS
-								</td>
-								<td width="30%">
-									<input type="text" name="status" style="width:100%;" placeholder="<?php echo isset($row['status']) ? $row['status'] : ''; ?>" required>
-								</td>
-							</tr>
-
 							<tr>
 								<td class="subtitle" width="14%">
 									REMARKS
@@ -323,32 +267,7 @@
 								<td width="10%">
 									<input class="data-field" type="text" name="name" style="width:100%;" required placeholder="<?php echo isset($row['name']) ? $row['name'] : ''; ?>">
 								</td>
-								
-								<td 
-									width="1%">&nbsp;
-								</td>
-
-								<td class="subtitle" width="5%">
-									NICKNAME
-								</td>
-								<td width="10%">
-									<input type="text" name="nickname" style="width:100%;" required placeholder="<?php echo isset($row['nickname']) ? $row['nickname'] : ''; ?>">
-								</td>
-							</tr>
-
-
-							<tr>
-								<td class="subtitle" width="5%">
-									TYPE
-								</td>
-								<td width="10%">
-									<input type="text" name="type" style="width:100%;" required placeholder="<?php echo isset($row['type']) ? $row['type'] : ''; ?>">
-								</td>
-							
-								<td 
-									width="1%">&nbsp;
-								</td>
-
+								<td width="1%">&nbsp;</td>
 								<td class="subtitle" width="5%">
 									I/C
 								</td>
@@ -363,56 +282,12 @@
 								<td width="10%">
 									<input class="data-field" type="text" name="contact" style="width:100%;" required placeholder="<?php echo isset($row['personal_contact']) ? $row['personal_contact'] : ''; ?>">
 								</td>
-
-								<td 
-									width="1%">&nbsp;
-								</td>
-
-								<td class="subtitle" width="5%">
-									OUTSTANDING
-								</td>
-								<td width="10%">
-									<input type="text" name="outstanding" style="width:100%;" required placeholder="<?php echo isset($row['outstanding']) ? $row['outstanding'] : ''; ?>">
-								</td>
-								<td width="1%">&nbsp;
-								</td>
-							</tr>	
-
-							<tr>
-								<td class="subtitle" width="5%">
-									NO. OF VEHICLES
-								</td>
-								<td width="10%">
-									<select name="plate_no" style="width:100%;" required>
-										<option value="">Select Vehicle</option>
-										<?php
-										$queryVeh = "SELECT plate_no FROM vehicle";
-										$result = mysqli_query($query1, $queryVeh);
-										while ($row = mysqli_fetch_assoc($result)) {
-											echo "<option value='" . $row['plate_no'] . "'>" . $row['plate_no'] . "</option>";
-										}
-										?>
-									</select>
-								</td>
-								
-								<td 
-									width="1%">&nbsp;
-								</td>
-
-								<td class="subtitle" width="5%">
-									STATUS
-								</td>
-								<td width="10%">
-									<input type="text" name="status" style="width:100%;" required placeholder="<?php echo isset($row['status']) ? $row['status'] : ''; ?>">
-								</td>
-								<td width="1%">&nbsp;
-								</td>
-
+								<td width="1%">&nbsp;</td>
 								<td class="subtitle" width="5%">
 									UPLOAD IC
 								</td>
 								<td width="10%">
-									<input name='documents' type='file' required="true" id="fileUpload"/>
+									<input name='documents' type='file' required="true" id="fileUpload">
 								</td>
 							</tr>
 							<tr>

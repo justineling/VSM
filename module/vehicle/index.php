@@ -65,7 +65,7 @@ $query1 = $connect;
 		        <thead>
 		            <tr>
 						<th style="width:2%;background-image:none !important;"><input type="checkbox" name="check[]" value="" id=""></th>
-		                <th style="width:2%;">NO</th>s
+		                <th style="width:2%;">NO</th>
 						<th>PLATE NO.</th>
 		                <th>ENGINE NO.</th>
 		                <th>BRAND</th>
@@ -74,9 +74,6 @@ $query1 = $connect;
 		                <th>MILEAGE</th>
 		                <th>OWNER</th>
 						<th>COLOUR</th>
-						<th>TYPE</th>
-						<th>YEAR</th>
-						<th>REMARKS</th>
 						<th>CC</th>
 		               <th style="width:10%;background-image:none !important;">ACTION</th>
 		            </tr>
@@ -93,9 +90,6 @@ $query1 = $connect;
 		                <th>MILEAGE</th>
 		                <th>OWNER</th>
 						<th>COLOUR</th>
-						<th>TYPE</th>
-						<th>YEAR</th>
-						<th>REMARKS</th>
 						<th>CC</th>
 		                <th></th>
 		            </tr>
@@ -121,13 +115,10 @@ $query1 = $connect;
 								echo '<td>'.$row["mileage"].'</td>';
 								echo '<td>'.$row["owner"].'</td>';
 								echo '<td>'.$row["colour"].'</td>';
-								echo '<td>'.$row["type"].'</td>';
-								echo '<td>'.$row["year"].'</td>';
-								echo '<td>'.$row["remarks"].'</td>';
 								echo '<td>'.$row["cc"].'</td>';
 								echo '
 									<td>
-									<!--loss of search function-->
+									<!--loss of edit and search function-->
 									<a href="mainIndex.php?page=edit_vehicle&value='.$row["vehicle_id"].'"><img class="actionbtn" src="../include/img/action/edit.png"></a>&nbsp;
 										<a href="#"><img class="actionbtn" src="../include/img/action/search.png"></a>&nbsp;
 										<a href="../module/add_vehicle/delete.php?value='.$row["vehicle_id"].'"><img class="actionbtn" src="../include/img/action/delete.png"></a>&nbsp;
@@ -149,7 +140,7 @@ $query1 = $connect;
 <script type="text/javascript">
 	$(document).ready(function() {
 	    // Setup - add a text input to each footer cell
-	    $('#register tfoot th').not(":eq(0), :eq(1), :eq(14)").each( function () {
+	    $('#register tfoot th').not(":eq(0), :eq(1), :eq(11)").each( function () {
 	        var title = $(this).text();
 	         $(this).html( '<input type="text" class="search_input"  style="color:#000" />' );
 	    } );

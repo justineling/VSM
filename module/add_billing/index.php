@@ -29,91 +29,107 @@ $query1 = $connect;
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 	<div class="row row2">
 		<div class="col-12 title">
-			<b>ADD VEHICLE</b>
+			<b>ADD BILLING</b>
 			
 		</div>
 		<div class="col-12" id="message">
 			
 		</div>
 		<div class="col-12">
-			<form action="../module/add_vehicle/add.php" method="GET">
+			<form action="../module/add_billing/add.php" method="GET">
 				<table width="70%">
 					<tr>
 						<td class="subtitle" width="16%">
-							PLATE NO.
+							BILLING NO.
+						</td>
+						<td width="30%">
+							<input type="text" name="billing_no" style="width:100%;" required>
+						</td>
+					<td width="3%"></td>
+						<td class="subtitle" width="16%">
+							INVOICE NO.
+						</td>
+						<td width="30%">
+							<input type="text" name="invoice_no" style="width:100%;" required>
+						</td>
+					</tr>
+					<tr>
+						<td class="subtitle" width="16%">
+							CUSTOMER NAME
+						</td>
+						<td width="30%">
+							<input type="text" name="customer_name" style="width:100%;" required>
+						</td>
+					<td width="3%"></td>
+						<td class="subtitle" width="16%">
+							PLATE NO
 						</td>
 						<td width="30%">
 							<input type="text" name="plate_no" style="width:100%;" required>
 						</td>
-					<td width="3%"></td>
-						<td class="subtitle" width="16%">
-							ENGINE NO.
-						</td>
-						<td width="30%">
-							<input type="text" name="engine_no" style="width:100%;" required>
-						</td>
 					</tr>
+					
 					<tr>
 						<td class="subtitle" width="16%">
-							BRAND
+							TITLE
 						</td>
 						<td width="30%">
-							<input type="text" name="brand" style="width:100%;" required>
+							<input type="text" name="title" style="width:100%;" required>
 						</td>
 					<td width="3%"></td>
 						<td class="subtitle" width="16%">
-							LAST SERVICE
+							SERVICE AMOUNT
 						</td>
 						<td width="30%">
-							<input type="text" name="last_service" style="width:100%;" required>
+							<input type="text" name="service_amount" style="width:100%;" required>
 						</td>
 					</tr>
 					
 					<tr>
 						<td class="subtitle" width="16%">
-							MODEL TYPE
+							PARTS AMOUNT
 						</td>
 						<td width="30%">
-							<input type="text" name="model_type" style="width:100%;" required>
+							<input type="text" name="parts_amount" style="width:100%;" required>
 						</td>
 					<td width="3%"></td>
 						<td class="subtitle" width="16%">
-							MILEAGE
+							TOTAL
 						</td>
 						<td width="30%">
-							<input type="text" name="mileage" style="width:100%;" required>
+							<input type="text" name="total" style="width:100%;" required>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<td class="subtitle" width="16%">
-							OWNER
+							CREATED AT
 						</td>
 						<td width="30%">
-							<input type="text" name="owner" style="width:100%;" required>
+							<input type="text" name="created_at" style="width:100%;" required>
 						</td>
 					<td width="3%"></td>
 						<td class="subtitle" width="16%">
-							COLOUR
+							STATUS
 						</td>
 						<td width="30%">
-							<input type="text" name="colour" style="width:100%;" required>
+							<input type="text" name="status" style="width:100%;" required>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<td class="subtitle" width="16%">
-							CC
+							STAFF NAME
 						</td>
 						<td width="30%">
-							<input type="text" name="cc" style="width:100%;" required>
+							<input type="text" name="staff_name" style="width:100%;" required>
 						</td>
 					<td width="3%"></td>
 						<td class="subtitle" width="16%">
-							&nbsp;
+							REMARKS
 						</td>
 						<td width="30%">
-							&nbsp;
+							<input type="text" name="remarks" style="width:100%;" required>
 						</td>
 					</tr>
 					

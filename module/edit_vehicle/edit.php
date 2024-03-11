@@ -15,12 +15,9 @@ if (isset($_GET["Submit"])) {
 	$mileage = mysqli_real_escape_string($query1,$_GET['mileage']);
 	$owner = mysqli_real_escape_string($query1,$_GET['owner']);
 	$colour = mysqli_real_escape_string($query1,$_GET['colour']);
-	$type = mysqli_real_escape_string($query1,$_GET['type']);
-	$year = mysqli_real_escape_string($query1,$_GET['year']);
-	$remarks = mysqli_real_escape_string($query1,$_GET['remarks']);
 	$cc = mysqli_real_escape_string($query1,$_GET['cc']);
 
-    $query2 = "UPDATE vehicle SET plate_no='$plate_no', engine_no='$engine_no', brand='$brand', last_service='$last_service', model_type='$model_type', mileage='$mileage', owner='$owner', colour='$colour', type='$type', yer='$year', remarks='$remarks',cc='$cc' WHERE vehicle_id='$vehicle_id'";
+    $query2 = "UPDATE vehicle SET plate_no='$plate_no', engine_no='$engine_no', brand='$brand', last_service='$last_service', model_type='$model_type', mileage='$mileage', owner='$owner', colour='$colour', cc='$cc' WHERE vehicle_id='$vehicle_id'";
 	
     if(mysqli_query($query1,$query2)){
 		

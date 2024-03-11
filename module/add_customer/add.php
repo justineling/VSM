@@ -12,21 +12,9 @@ if(isset($_POST["Submit"])){
 	$address = mysqli_real_escape_string($query1,$_POST['address']);
 	$remarks = mysqli_real_escape_string($query1,$_POST['remarks']);
 	
-	$nickname = mysqli_real_escape_string($query1,$_POST['nickname']); 
-	$type = mysqli_real_escape_string($query1,$_POST['type']);
-	$outstanding = mysqli_real_escape_string($query1,$_POST['outstanding']); 
-	$plate_no = mysqli_real_escape_string($query1,$_POST['plate_no']); 
-	$status = mysqli_real_escape_string($query1,$_POST['status']); 
-	
-	// Vehicle ID
-	$queryVeh = "SELECT vehicle_id FROM vehicle WHERE plate_no = '$plate_no'";
-	$resultVeh = mysqli_query($query1, $queryVeh);
-	$rowVeh = mysqli_fetch_assoc($resultVeh);
-	$vehicle_id = $rowVeh['vehicle_id'];
-	// End of Vehicle ID
-
-	$query2 = "INSERT INTO customer (customer_id, name, company_name, account_code, ic, email, remarks, personal_contact, personal_email, department, office_contact, office_fax, address, government_private, website, uploaded_ic, nickname, type, outstanding, vehicle_id, status)
-	VALUES ('', '$name', '', '$account_code', '$ic', '$email', '$remarks', '$contact', '$email', '', '', '', '$address', '', '', '', '$nickname', '$type', '$outstanding', '$vehicle_id', '$status')";
+	$query2 = "INSERT INTO customer (customer_id,name,company_name,account_code,ic,email,remarks,personal_contact,personal_email,department,office_contact,
+				office_fax,address,government_private,website,uploaded_ic)
+				VALUES ('','".$name."','','".$account_code."','".$ic."','','".$remarks."','".$contact."','".$email."','','','','".$address."','','','')";
 	
 	if(mysqli_query($query1,$query2)){
 		

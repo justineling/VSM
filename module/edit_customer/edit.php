@@ -15,22 +15,7 @@ if (isset($_POST["Submit"])) {
     $address = mysqli_real_escape_string($query1, $_POST['address']);
     $remarks = mysqli_real_escape_string($query1, $_POST['remarks']);
 
-    $nickname = mysqli_real_escape_string($query1,$_POST['nickname']); 
-	$type = mysqli_real_escape_string($query1,$_POST['type']);
-	$outstanding = mysqli_real_escape_string($query1,$_POST['outstanding']); 
-	$plate_no = mysqli_real_escape_string($query1,$_POST['plate_no']); 
-	$status = mysqli_real_escape_string($query1,$_POST['status']); 
-
-    // Vehicle ID
-	$queryVeh = "SELECT vehicle_id FROM vehicle WHERE plate_no = '$plate_no'";
-	$resultVeh = mysqli_query($query1, $queryVeh);
-	$rowVeh = mysqli_fetch_assoc($resultVeh);
-	$vehicle_id = $rowVeh['vehicle_id'];
-	// End of Vehicle ID
-
-    $query2 = "UPDATE customer SET name='$name', account_code='$account_code', ic='$ic', email='$email', remarks='$remarks', personal_contact='$contact', address='$address', 
-                nickname='$nickname', type ='$type', outstanding='$outstanding', vehicle_id ='$vehicle_id', status='$status'
-                WHERE customer_id='$customer_id'";
+    $query2 = "UPDATE customer SET name='$name', account_code='$account_code', ic='$ic', email='$email', remarks='$remarks', personal_contact='$contact', address='$address' WHERE customer_id='$customer_id'";
 
     if (mysqli_query($query1, $query2)) {
 

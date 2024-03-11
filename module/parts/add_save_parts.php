@@ -1,41 +1,47 @@
 <?php
+	// include "../../include/dbconnection.php";
+	
+	
 	include_once '../../include/connect.php';
+	// include("../include/access.php");
+	// $date = date("Y-m-d");
+	// $time = date("H:i:sa");
+	// $user = $_SESSION['username'];
+	// $level = $_SESSION['access_level'];
+
 
 	if(isset($_POST['save']))
 	{        
-	$parts_code = $_POST['pcode'];
-	$parts_name = $_POST['pname'];
-	$parts_cost = $_POST['pcost'];
-	$parts_des = $_POST['pdes'];
-	$parts_soh = $_POST['psoh'];
-	$parts_type = $_POST['ptype'];
-	$parts_sellp = $_POST['psellp'];
-	$parts_bar = $_POST['pbar'];
+
+     $parts_name = $_POST['pname'];
+     $parts_des = $_POST['pdes'];
+     $parts_type = $_POST['ptype'];
+     $parts_cost = $_POST['pcost'];
+     $parts_sellp = $_POST['psellp'];
+     $parts_bar = $_POST['pbar'];
 
 
-     $sql = "INSERT INTO parts (parts_code,
-	 							item_name, 
-								cost, 
-								description, 
-								soh,
-								category, 
-								sell_price, 
-								barcode)
+     $sql = "INSERT INTO parts (part_name, 
+     							description, 
+     							type, 
+     							cost, 
+     							sell_price, 
+     							barcode)
 
-				VALUES ('$parts_code',
-						'$parts_name',
-						'$parts_cost',
-						'$parts_des',
-						'$parts_soh',
+     			VALUES ('$parts_name',
+     					'$parts_des',
      					'$parts_type',
+     					'$parts_cost',
      					'$parts_sellp',
      					'$parts_bar')";
  
      if (mysqli_query($connect, $sql)) {
-        echo '<script>alert("Succesfully added new service!")</script>';
+        
+        echo '<script>alert("Succesfully added new part!")</script>';
      } else {
         echo "Error: " . $sql . ":-" . mysqli_error($connect);
      }
+
 }
 
 echo '<script>window.location="../../main/mainIndex.php?page=parts"</script>';
