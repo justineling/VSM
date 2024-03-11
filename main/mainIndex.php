@@ -51,6 +51,14 @@
 	else if ($_GET['page'] == 'quotation') {
 		$page = "quotation";
 	}
+	else if ($_GET['page'] == 'add_quotation') {
+		$page = "add_quotation";
+	}
+	else if (isset($_GET['page']) && $_GET['page'] == 'edit_quotation' && isset($_GET['value'])){
+		// Storing the value in SESSION
+		$_SESSION['quotation_id'] = $_GET['value'];
+		$page = "edit_quotation";
+	}
 	else if ($_GET['page'] == 'billing') {
 		$page = "billing";
 	}
