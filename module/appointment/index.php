@@ -50,12 +50,13 @@ $query1 = $connect;
 		border-radius: 0;
 	}
 </style>
-<body style="overflow-x: scroll;">
-<main role="main" class="col-lg-9 ml-sm-0 col-lg-12 pt-2 px-2" style="background-color: white;">
+
+<main role="main" class="col-md-12 ml-sm-0 col-lg-12 pt-2 px-2" style="background-color: white;">
 	<div class="row row2">
 		<div class="col-12 title">
 			<b>APPOINTMENT</b>
 			<div style="float:right;">
+                <!--loss of add function-->
 				<a type="button" class="btn btn-green" href="mainIndex.php?page=add_appointment">ADD</a>&nbsp; 
 			</div>
 		</div>
@@ -64,8 +65,8 @@ $query1 = $connect;
 			<table id="register" class="display" style="width:100%">
 		        <thead>
 		            <tr>
-						<th style="padding:0;background-image:none !important;"><input type="checkbox" name="check[]" value="" id=""></th>
-						<th style="padding:0;background-image:none !important;">NO</th>
+						<th style="width:2%;background-image:none !important;"><input type="checkbox" name="check[]" value="" id=""></th>
+		                <th style="width:2%;">NO</th>
 						<th>DATE</th>
 		                <th>TIME</th>
 		                <th>CUSTOMER</th>
@@ -89,7 +90,6 @@ $query1 = $connect;
 		                <th>PRE-ASSIGN MECHANIC</th>
 		                <th>PRE-ASSIGN PARTS</th>
 		                <th>REMARKS</th>
-						<th style="width:10%;background-image:none !important;"></th>
 		            </tr>
 		        </tfoot>
 		        <tbody>
@@ -161,7 +161,7 @@ $query1 = $connect;
 										}
 									}
 
-									$query7 = "SELECT item_name FROM parts WHERE parts_id=$parts_id";
+									$query7 = "SELECT item_name FROM parts WHERE part_id=$parts_id";
 									if($result7 = mysqli_query($query1,$query7)){
 										if($row = mysqli_fetch_assoc($result7)){
 											$item_name = $row["item_name"];
@@ -198,7 +198,7 @@ $query1 = $connect;
 <script type="text/javascript">
 	$(document).ready(function() {
 	    // Setup - add a text input to each footer cell
-	    $('#register tfoot th').not(":eq(0), :eq(1), :eq(10)").each( function () {
+	    $('#register tfoot th').not(":eq(0), :eq(1)").each( function () {
 	        var title = $(this).text();
 	         $(this).html( '<input type="text" class="search_input"  style="color:#000" />' );
 	    } );

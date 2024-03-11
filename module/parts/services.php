@@ -7,6 +7,9 @@
 	}
 ?>
 
+<html>
+<head>
+    <title>Services</title>
     <link rel="stylesheet" href="../include/css/css.css">
     <link rel="stylesheet" type="text/css" href="../include/DataTables/datatables.min.css"/>
     <style type="text/css">
@@ -57,16 +60,16 @@
             border-radius: 0;
         }
     </style>
-
+</head>
 <body style="overflow-x: scroll;">
-<main role="main" class="col-lg-9 ml-sm-0 col-lg-12 pt-2 px-2" style="background-color: white;">
-	<div class="row row2">
-		<div class="col-12 title">
+<main role="main" class="col-md-12 ml-sm-0 col-lg-12 pt-2 px-2" style="background-color: white;">
+    <div class="row row2">
+        <div class="col-12 title">
             <b>SERVICES</b> <br>
             <div style="float:left">
-                <a type="button" class="btn btn-grey" href="../main/mainIndex.php?page=stock">STOCK</a>&nbsp;
+                <a type="button" class="btn btn-grey" href="../main/mainIndex.php?page=parts">STOCK</a>&nbsp;
                 <a type="button" class="btn btn-grey" style="background-color:#008ae6;" href="../main/mainIndex.php?page=services">SERVICES</a>&nbsp;
-                <a type="button" class="btn btn-grey" href="../main/mainIndex.php?page=parts">PART TYPE</a>&nbsp;  
+                <a type="button" class="btn btn-grey" href="#">PART TYPE</a>&nbsp;  
                 <a type="button" class="btn btn-grey" href="#">LOCATION</a>&nbsp;   
             </div>
             <div style="float:right;">
@@ -78,8 +81,8 @@
             <table id="register" class="display" style="width:100%">
                 <thead>
                     <tr>
-                        <th style="padding:0;background-image:none !important;"><input type="checkbox" name="check[]" value="" id=""></th>
-						<th style="padding:0;background-image:none !important;">NO</th>
+                        <th style="width:2%;background-image:none !important;"><input type="checkbox" name="check[]" value="" id=""></th>
+                        <th style="width:2%;">NO</th>
                         <th>CODE</th>
                         <th>NAME</th>
                         <th>COST</th>
@@ -91,18 +94,16 @@
                 </thead>
 				<tfoot>
 					<tr>
-                        <th style="padding:0;"></th> 
-						<th style="padding:0;"></th>  
+						<th style="padding:0;"></th>
+						<th style="padding:0;"></th>   
 						<th>CODE</th>
 						<th>NAME</th>
 						<th>COST</th>
 						<th>DESCRIPTION</th>
 						<th>TYPE</th>
 						<th>BARCODE</th>
-						<th style="width:10%;background-image:none !important;"></th>
 					</tr>
 				</tfoot>
-                
                 <tbody>
                     <?php                                
                       $srv_q = "SELECT * FROM service";
@@ -123,11 +124,11 @@
                         <td><?php echo $srv_row["service_type"]; ?></td>
                         <td><?php echo $srv_row["service_barcode"]; ?></td>
                         <td>
-                            <a href="mainIndex.php?page=edit_services&id=<?php echo $srv_row["service_id"] ?>">
+                            <a href="mainIndex.php?page=edit_services&id=<?php echo $srv_row["service_code"] ?>">
                                 <img class="actionbtn" src="../include/img/action/edit.png">
                             </a>&nbsp;
                             <a href="#"><img class="actionbtn" src="../include/img/action/search.png"></a>&nbsp;
-                            <a style="cursor: pointer;" onclick="openModal('<?php echo $srv_row["service_code"] ?>')"><img class="actionbtn" src="../include/img/action/delete.png"></a>&nbsp;
+                            <a style="cursor: pointer;" onclick="openmodal('<?php echo $srv_row["service_code"] ?>')"><img class="actionbtn" src="../include/img/action/delete.png"></a>&nbsp;
                         </td>
                        
                     </tr>
@@ -139,15 +140,15 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="mi-modal">
+     <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="mi-modal">
         <div class="modal-dialog modal-sm" style="">
             <div class="modal-content" style="width: 400px; vertical-align: center;">
                 <div class="modal-header">
                     <p class="modal-title" id="myModalLabel">Are you sure about deleting this user's record?<br>(Click anywhere to close)</p> <br>
                 </div>
                 <div class="modal-footer">
-                    <a id="linkDel" href="../module/parts/delete_service.php?id="><button type="button" class="btn btn-primary" id="modal-btn-si" >Confirm</button></a>
-                    <button type="button" class="btn btn-default" id="modal-btn-no" data-dismiss="modal">No</button>
+                    <a id="linkDel" href="../module/parts/delete_service.php?id=<?php echo $srv_row["service_code"] ?>"><button type="button" class="btn btn-primary" id="modal-btn-si" >Confirm</button></a>
+                    <!-- <button type="button" class="btn btn-default" id="modal-btn-no">No</button> -->
                 </div>
             </div>
         </div>
@@ -155,19 +156,20 @@
 
 </main>
 </body>
-
 <script src="../include/js/jquery-2.1.3.min.js"></script>
 <script src="../include/js/bootstrap.min.js"></script>
 <script src="../include/DataTables/datatables.min.js"></script>
 <script type="text/javascript">
-    function openModal(serviceCode) {
-        $('#linkDel').attr('href', '../module/parts/delete_service.php?id=' + serviceCode);
-        $('#mi-modal').modal('show');
-    }
+    function openmodal(x){
+    //alert();
+    document.getElementById("linkDel").setAttribute('href', '../module/parts/delete_service.php?id='+x);
+    $("#mi-modal").modal('show');
+  }
+
 
     $(document).ready(function() {
         // Setup - add a text input to each footer cell
-        $('#register tfoot th').not(":eq(0), :eq(1), :eq(8)").each( function () {
+        $('#register tfoot th').not(":eq(0), :eq(8)").each( function () {
             var title = $(this).text();
              $(this).html( '<input type="text" class="search_input"  style="color:#000" />' );
         } );
@@ -179,7 +181,7 @@
             "bAutoWidth": true,
             "sDom": '<"H"lTr><"datatable-scroll"t><"F"ip>' //disable search box
         } );
-
+     
         // DataTable
         var table = $('#register').DataTable();
 
@@ -196,8 +198,5 @@
             });
         });
     });
-
-    $(".modalimport").click(function(){
-        $("#import_reg").modal();
-    });
 </script>
+</html>

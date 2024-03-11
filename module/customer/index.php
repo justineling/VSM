@@ -89,7 +89,6 @@ if(isset($_GET['value'])) {
 				<a type="button" class="btn btn-green" href="mainIndex.php?page=add_customer">ADD</a>&nbsp; 
 			</div>
 		</div>
-		
 		<div class="col-12">
 			<table id="register" class="display" style="width:100%">
 		        <thead>
@@ -99,8 +98,6 @@ if(isset($_GET['value'])) {
 						<th>ACCOUNT CODE</th>
 						<th>COMPANY NAME</th>
 		                <th>NAME</th>
-						<th>NICKNAME</th>
-						<th>TYPE</th>
 						<th>IC</th>
 		                <th>PERSONAL CONTACT</th>
 						<th>PERSONAL EMAIL</th>
@@ -109,9 +106,6 @@ if(isset($_GET['value'])) {
 						<th>OFFICE FAX</th>
 		                <th>EMAIL</th>
 						<th>ADDRESS</th>
-						<th>OUTSTANDING</th>
-						<th>NO. OF VEHICLES</th>
-						<th>STATUS</th>
 						<th>GOVERMENT / PRIVATE</th>
 						<th>WEBSITE</th>
 						<th>UPLOADED IC</th>
@@ -123,11 +117,9 @@ if(isset($_GET['value'])) {
 		            <tr>
 						<th style="padding:0;"></th>
 		                <th style="padding:0;"></th>
-						<th>ACCOUNT CODE</th>
+		                <th>ACCOUNT CODE</th>
 						<th>COMPANY NAME</th>
 		                <th>NAME</th>
-						<th>NICKNAME</th>
-						<th>TYPE</th>
 						<th>IC</th>
 		                <th>PERSONAL CONTACT</th>
 						<th>PERSONAL EMAIL</th>
@@ -136,9 +128,6 @@ if(isset($_GET['value'])) {
 						<th>OFFICE FAX</th>
 		                <th>EMAIL</th>
 						<th>ADDRESS</th>
-						<th>OUTSTANDING</th>
-						<th>NO. OF VEHICLES</th>
-						<th>STATUS</th>
 						<th>GOVERMENT / PRIVATE</th>
 						<th>WEBSITE</th>
 						<th>UPLOADED IC</th>
@@ -163,8 +152,6 @@ if(isset($_GET['value'])) {
 								echo '<td>'.$row["account_code"].'</td>';
 								echo '<td>'.$row["company_name"].'</td>';
 								echo '<td>'.$row["name"].'</td>';
-								echo '<td>'.$row["nickname"].'</td>';
-								echo '<td>'.$row["type"].'</td>';
 								echo '<td>'.$row["ic"].'</td>';
 								echo '<td>'.$row["personal_contact"].'</td>';
 								echo '<td>'.$row["personal_email"].'</td>';
@@ -173,26 +160,6 @@ if(isset($_GET['value'])) {
 								echo '<td>'.$row["office_fax"].'</td>';
 								echo '<td>'.$row["email"].'</td>';
 								echo '<td>'.$row["address"].'</td>';
-								echo '<td>'.$row["outstanding"].'</td>';
-
-
-								// Vehicle ID
-								$customer_vehicle_id = $row['vehicle_id'];
-
-								$sql = "SELECT plate_no FROM vehicle WHERE vehicle_id = $customer_vehicle_id";
-
-								$result = mysqli_query($connect, $sql);
-
-								if (mysqli_num_rows($result) > 0) {
-									$rowCus_Veh = mysqli_fetch_assoc($result);
-									$plate_no = $rowCus_Veh['plate_no'];
-									echo '<td>'.$plate_no.'</td>';
-								} else {
-									echo "No vehicle found";
-								}
-								// End of Vehicle ID
-								
-								echo '<td>'.$row["status"].'</td>';
 								echo '<td>'.$row["government_private"].'</td>';
 								echo '<td>'.$row["website"].'</td>';
 								echo '<td>'.$row["uploaded_ic"].'</td>';
@@ -223,7 +190,7 @@ if(isset($_GET['value'])) {
 <script type="text/javascript">
 	$(document).ready(function() {
 	    // Setup - add a text input to each footer cell
-	    $('#register tfoot th').not(":eq(0), :eq(1), :eq(22)").each( function () {
+	    $('#register tfoot th').not(":eq(0), :eq(1), :eq(17)").each( function () {
 	        var title = $(this).text();
 	         $(this).html( '<input type="text" class="search_input"  style="color:#000" />' );
 	    } );

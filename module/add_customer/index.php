@@ -76,24 +76,6 @@ $query1 = $connect;
 						
 						<tr>
 							<td class="subtitle" width="14%">
-								NICKNAME
-							</td>
-							<td width="30%">
-								<input type="text" name="nickname" style="width:100%;" required>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="subtitle" width="14%">
-								TYPE
-							</td>
-							<td width="30%">
-								<input type="text" name="type" style="width:100%;" required>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="subtitle" width="14%">
 								IC
 							</td>
 							<td width="30%">
@@ -125,42 +107,6 @@ $query1 = $connect;
 							</td>
 							<td width="30%">
 								<textarea  name="address" cols="35" rows="3" required></textarea>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="subtitle" width="14%">
-								OUTSTANDING
-							</td>
-							<td width="30%">
-								<input type="text" name="outstanding" style="width:100%;" required>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="subtitle" width="14%">
-								NO. OF VEHICLES
-							</td>
-							<td width="30%">
-								<select name="plate_no" style="width:100%;" required>
-                                    <option value="">Select Vehicle</option>
-                                    <?php
-                                    $queryVeh = "SELECT plate_no FROM vehicle";
-                                    $result = mysqli_query($query1, $queryVeh);
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo "<option value='" . $row['plate_no'] . "'>" . $row['plate_no'] . "</option>";
-                                    }
-                                    ?>
-                                </select>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="subtitle" width="14%">
-								STATUS
-							</td>
-							<td width="30%">
-								<input type="text" name="status" style="width:100%;" required>
 							</td>
 						</tr>
 						
@@ -312,35 +258,13 @@ $query1 = $connect;
 							<td width="10%">
 								<input type="text" name="name" style="width:100%;" required>
 							</td>
-
-							<td 
-								width="1%">&nbsp;
+							<td width="1%">&nbsp;
 							</td>
-
-							<td class="subtitle" width="5%">
-								NICKNAME
-							</td>
-							<td width="10%">
-								<input type="text" name="nickname" style="width:100%;" required>
-							</td>
-						</tr>
-						<tr>
-							<td class="subtitle" width="5%">
-								TYPE
-							</td>
-							<td width="10%">
-								<input type="text" name="type" style="width:100%;" required>
-							</td>
-							
-							<td 
-								width="1%">&nbsp;
-							</td>
-
 							<td class="subtitle" width="5%">
 								I/C
 							</td>
 							<td width="10%">
-								<input type="text" name="ic" style="width: 100%;" required>
+								<input type="text" name="ic" style="width: 65%;" required>
 							</td>
 						</tr>
 						<tr>
@@ -350,50 +274,8 @@ $query1 = $connect;
 							<td width="10%">
 								<input type="text" name="contact" style="width:100%;" required>
 							</td>
-							
-							<td 
-								width="1%">&nbsp;
-							</td>
-
-							<td class="subtitle" width="5%">
-								OUTSTANDING
-							</td>
-							<td width="10%">
-								<input type="text" name="outstanding" style="width:100%;" required>
-							</td>
 							<td width="1%">&nbsp;
 							</td>
-						</tr>	
-						<tr>
-							<td class="subtitle" width="5%">
-								NO. OF VEHICLES
-							</td>
-							<td width="10%">
-								<select name="plate_no" style="width:100%;" required>
-                                    <option value="">Select Vehicle</option>
-                                    <?php
-                                    $queryVeh = "SELECT plate_no FROM vehicle";
-                                    $result = mysqli_query($query1, $queryVeh);
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo "<option value='" . $row['plate_no'] . "'>" . $row['plate_no'] . "</option>";
-                                    }
-                                    ?>
-                                </select>
-							</td>
-							
-							<td 
-								width="1%">&nbsp;
-							</td>
-
-							<td class="subtitle" width="5%">
-								STATUS
-							</td>
-							<td width="10%">
-								<input type="text" name="status" style="width:100%;" required>
-							</td>
-							<td width="1%">&nbsp;
-							</td>
-
 							<td class="subtitle" width="5%">
 								UPLOAD IC
 							</td>

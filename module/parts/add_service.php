@@ -40,58 +40,61 @@ $query1 = $connect;
   height: 20px;
 
 }
+
+
 </style>
 
 <main role="main" class="col-md-12 ml-sm-0 col-lg-12 pt-0 px-0" style="background-color: white;">
+
   <div class="col-12 title" style="padding-top: 10px;">
     <h4 style="color: #008ae6; "><img src="" style=""> ADD SERVICE</h4>
-  </div>
+    </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9">
-        <div class="card">
-          <div class="card-body">
-            <form id="addServiceForm" action="../module/parts/add_save_service.php" method="post">
-              <table id="serviceTable" style="border: 1px solid transparent; width: 100%;">
-                <tbody>
-                  <tr class="mt-3">
-                    <td style="width: auto;">Service Code:</td>
-                    <td style="width: 80%;"><input type="text" name="scode" style="width: 100%;" required></td>
-                  </tr>
-                  <tr class="mt-3">
-                    <td style="width: auto;">Service Name:</td>
-                    <td style="width: 80%;"><input type="text" name="sname" style="width: 100%;" required></td>
-                  </tr>
-                  <tr>
-                    <td style="width: 30%;">Description:</td>
-                    <td style="width: 70%;"><textarea name="sdes" style="width: 100%; height: 150px;" required></textarea></td>
-                  </tr>
-                  <tr>
-                    <td style="width: 30%;">Type:</td>
-                    <td style="width: 70%;"><input type="text" name="stype" style="width: 100%;" required></td>
-                  </tr>
-                  <tr>
-                    <td style="width: 30%;">Cost:</td>
-                    <td style="width: 70%;"><input type="text" name="scost" style="width: 100%;" required></td>
-                  </tr>
-                  <tr>
-                    <td style="width: 30%;">Barcode:</td>
-                    <td style="width: 70%;"><input type="text" name="sbar" style="width: 100%;" required></td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              <div style="margin-top: 20px;">
-                <input id="discardBtn" type="button" class="btn btn-danger mr-2" value="DISCARD" href="#"></a>
-                <input type="submit" name="save" class="btn btn-success" value="SAVE">
-              </div>
-            </form>
-          </div>
+  <div class='' style="padding: 10px 10px;">
+  <div class='row'>
+    <div class='col-lg-9' style="">
+      <div class='card' style="">
+        <div class='card-body'>
+          <table style="border: 1px solid transparent; width: 100%;">
+            <form action="../module/parts/add_save_service.php" method="post">
+        <tbody>
+          <tr class="mt-3">
+            <td style="width: auto;">Service Name: </td>
+            <td style=" width: 80%;"><input type="text" name="sname" style="width: 100%;"  ></td>
+          </tr>
+          <tr>
+            <td style="width: 30%;">Description: </td>
+            <td style=" width: 70%;"><textarea name="sdes" style="width: 100%; height: 150px;"></textarea></td>
+          </tr>
+          <tr>
+            <td style="width: 30%;">Type: </td>
+            <td style=" width: 70%;"><input type="text" name="stype" style="width: 100%;"  ></td>
+          </tr>
+          <tr>
+            <td style="width: 30%;">Cost: </td>
+            <td style=" width: 70%;"><input type="text" name="scost" style="width: 100%;"  ></td>
+          </tr>
+          <tr>
+            <td style="width: 30%;">Barcode: </td>
+            <td style=" width: 70%;"><input type="text" name="sbar" style="width: 100%;"  ></td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <div style="float: right;">
+        <a type="button" class="btn btn-green" href="../main/mainIndex.php?page=services" style="background-color: red;">DISCARD</a>
+        &nbsp; 
+        <input type="submit" class="btn btn-green" style="float: right" value="SAVE" name="save">&nbsp;
+      </div>
+    </form>
         </div>
       </div>
-    </div>
+        </div>
+        
   </div>
+  
+  
+</div>
 </main>
 
 <script src="../include/js/jquery-2.1.3.min.js"></script>
@@ -133,9 +136,4 @@ $query1 = $connect;
   $(".modalimport").click(function(){
     $("#import_reg").modal();
   });
-
-  document.getElementById("discardBtn").addEventListener("click", function(event) {
-			event.preventDefault(); 
-			document.getElementById("addServiceForm").reset();
-    	});
 </script>

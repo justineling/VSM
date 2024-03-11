@@ -8,6 +8,12 @@
 	else if ($_GET['page'] == 'add_customer') {
 		$page = "add_customer";
 	}
+
+	else if (isset($_GET['page']) && $_GET['page'] == 'edit_customer' && isset($_GET['value'])){
+		// Storing the value in SESSION
+		$_SESSION['customer_id'] = $_GET['value'];
+		$page = "edit_customer";
+	}
 	
 	else if ($_GET['page'] == 'vehicle') {
 		$page = "vehicle";
@@ -16,8 +22,22 @@
 		$page = "add_vehicle";
 	}
 	
+	else if (isset($_GET['page']) && $_GET['page'] == 'edit_vehicle' && isset($_GET['value'])){
+		// Storing the value in SESSION
+		$_SESSION['vehicle_id'] = $_GET['value'];
+		$page = "edit_vehicle";
+	}
+
 	else if ($_GET['page'] == 'appointment') {
 		$page = "appointment";
+	}
+	else if ($_GET['page'] == 'add_appointment') {
+		$page = "add_appointment";
+	}
+	else if (isset($_GET['page']) && $_GET['page'] == 'edit_appointment' && isset($_GET['value'])){
+		// Storing the value in SESSION
+		$_SESSION['appointment_id'] = $_GET['value'];
+		$page = "edit_appointment";
 	}
 	else if ($_GET['page'] == 'jobsheet') {
 		$page = "jobsheet";
@@ -33,6 +53,14 @@
 	}
 	else if ($_GET['page'] == 'billing') {
 		$page = "billing";
+	}
+	else if ($_GET['page'] == 'add_billing') {
+		$page = "add_billing";
+	}
+	else if (isset($_GET['page']) && $_GET['page'] == 'edit_billing' && isset($_GET['value'])){
+		// Storing the value in SESSION
+		$_SESSION['billing_no'] = $_GET['value'];
+		$page = "edit_billing";
 	}
 	else if ($_GET['page'] == 'parts') {
 		$page = "parts";
