@@ -225,6 +225,9 @@
           <a class="icon-img" style="width:120px; border-right: 2px solid lightgray; padding-left: 10px; padding-right: 10px;text-decoration: none;color:#000000;" href="mainIndex.php?page=jobsheet"> 
             <b style="color: white"><img src="../include/icon/header1/JOBSHEET(WHITE).png" style="width: 40px; height: 40px;"> JOBSHEET</b>
           </a>
+          <a class="icon-img" style="width:140px; border-right: 2px solid lightgray; padding-left: 10px; padding-right: 10px;text-decoration: none;color:#000000;" href="mainIndex.php?page=quotation"> 
+            <b style="color: white"><img src="../include/icon/header1/QUOTATION(WHITE).png" style="width: 40px; height: 40px;"> QUOTATION</b>
+          </a>
           <a class="icon-img" style="width:120px; border-right: 2px solid lightgray; padding-left: 10px; padding-right: 10px;text-decoration: none;color:#000000;" href="mainIndex.php?page=billing"> 
             <b style="color: white"><img src="../include/icon/header1/BILLING(WHITE).png" style="width: 40px; height: 40px;"> BILLING</b>
           </a>
@@ -353,6 +356,12 @@
             }
         else if ($page == 'quotation') {
               include "../module/quotation/index.php"; 
+            }
+        else if ($page == 'add_quotation') {
+              include "../module/add_quotation/index.php"; 
+            }
+        else if ($page == 'edit_billing') {
+              include "../module/edit_quotation/index.php"; 
             }
         else if ($page == 'billing') {
               include "../module/billing/index.php"; 
